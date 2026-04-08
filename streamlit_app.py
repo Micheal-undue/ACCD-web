@@ -11,6 +11,7 @@ st.set_page_config(
 )
 
 # 深度清理 Streamlit Cloud 专用组件
+# 极致隐藏版 CSS
 hide_style = """
     <style>
     /* 1. 隐藏顶部 Header 和菜单 */
@@ -18,34 +19,41 @@ hide_style = """
         display: none !important;
     }
     
-    /* 2. 隐藏侧边栏及其折叠按钮 */
+    /* 2. 隐藏侧边栏及其控制按钮 */
     section[data-testid="stSidebar"], 
     button[data-testid="stSidebarCollapsedControl"] {
         display: none !important;
     }
 
-    /* 3. 隐藏底部 "Made with Streamlit" 脚注 */
+    /* 3. 隐藏底部 "Made with Streamlit" */
     footer {
         display: none !important;
     }
 
-    /* 4. 【关键：针对云端管理按钮】锁定右下角所有悬浮按钮 */
-    /* 这里的选择器覆盖了部署按钮、管理按钮和状态指示器 */
-    .stAppDeployButton, 
-    [data-testid="stAppViewToolbar"], 
-    [data-testid="stConnectionStatus"],
-    [data-testid="stToolbar"],
-    .stAppToolbar {
+    /* 4. 【核心突破】强力清除右下角管理/部署按钮 */
+    /* 针对所有包含 'Deploy' 或 'Toolbar' 字样的容器进行拦截 */
+    [data-testid="stAppViewToolbar"],
+    .stAppDeployButton,
+    .stDeployButton,
+    div[class*="stAppDeployButton"],
+    div[class*="DeployButton"],
+    div[class*="viewerBadge"] {
         display: none !important;
         visibility: hidden !important;
+        height: 0 !important;
+        width: 0 !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
     }
 
-    /* 针对 Streamlit Cloud 注入的特定管理按钮容器 */
-    div.stAppDeployButton {
+    /* 5. 针对移动端可能出现的悬浮管理层 */
+    #streamlit_cloud_host_floating_container,
+    .st-emotion-cache-1wbqy5l, /* 某些版本中的特定类名 */
+    [aria-label="Manage app"] {
         display: none !important;
     }
 
-    /* 5. 移除页面顶部和底部的多余空白 */
+    /* 6. 移除页面边距 */
     .block-container {
         padding-top: 0rem !important;
         padding-bottom: 0rem !important;
