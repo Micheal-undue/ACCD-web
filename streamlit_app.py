@@ -10,40 +10,42 @@ st.set_page_config(
     initial_sidebar_state="collapsed" # 初始状态设为折叠
 )
 
-# 2. 终极版隐藏 CSS (针对所有可能的工具栏标识符)
+# 深度清理 Streamlit Cloud 专用组件
 hide_style = """
     <style>
-    /* 隐藏顶部 Header */
+    /* 1. 隐藏顶部 Header 和菜单 */
     header[data-testid="stHeader"] {
         display: none !important;
     }
     
-    /* 隐藏侧边栏及其控制按钮 */
+    /* 2. 隐藏侧边栏及其折叠按钮 */
     section[data-testid="stSidebar"], 
     button[data-testid="stSidebarCollapsedControl"] {
         display: none !important;
     }
 
-    /* 隐藏底部的 "Made with Streamlit" */
+    /* 3. 隐藏底部 "Made with Streamlit" 脚注 */
     footer {
         display: none !important;
     }
 
-    /* 【核心修改】多重锁定隐藏右下角 Manage app 按钮和工具栏 */
-    div[data-testid="stAppViewToolbar"], 
-    .stAppToolbar, 
+    /* 4. 【关键：针对云端管理按钮】锁定右下角所有悬浮按钮 */
+    /* 这里的选择器覆盖了部署按钮、管理按钮和状态指示器 */
+    .stAppDeployButton, 
+    [data-testid="stAppViewToolbar"], 
+    [data-testid="stConnectionStatus"],
     [data-testid="stToolbar"],
-    .stDeployButton {
+    .stAppToolbar {
         display: none !important;
         visibility: hidden !important;
     }
-    
-    /* 彻底隐藏右上角的三个点菜单 */
-    #MainMenu {
+
+    /* 针对 Streamlit Cloud 注入的特定管理按钮容器 */
+    div.stAppDeployButton {
         display: none !important;
     }
 
-    /* 移除页面顶部多余的空白 */
+    /* 5. 移除页面顶部和底部的多余空白 */
     .block-container {
         padding-top: 0rem !important;
         padding-bottom: 0rem !important;
