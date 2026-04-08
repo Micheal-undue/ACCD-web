@@ -10,36 +10,38 @@ st.set_page_config(
     initial_sidebar_state="collapsed" # 初始状态设为折叠
 )
 
-# 深度清理 Streamlit Cloud 专用组件
-# 极致隐藏版 CSS
+# 极致隐藏方案：针对动态 ID 和云端容器
 hide_style = """
     <style>
-    /* 1. 隐藏所有基础组件 */
+    /* 1. 隐藏顶栏、侧边栏和官方页脚 */
     header[data-testid="stHeader"], 
     section[data-testid="stSidebar"], 
     footer {
         display: none !important;
     }
 
-    /* 2. 针对你截图中的类名进行模糊匹配拦截 */
-    /* 匹配所有类名中包含 viewerBadge 或 profileContainer 的元素 */
-    div[class*="viewerBadge"],
-    a[class*="viewerBadge"],
-    div[class*="profileContainer"],
-    div[class*="managed-"] {
+    /* 2. 针对你源码中查到的 viewerBadge 和 profileContainer 进行模糊匹配 */
+    /* 使用 *= 确保只要类名包含这些关键词就会被隐藏 */
+    [class*="viewerBadge"],
+    [class*="profileContainer"],
+    [class*="managed-"],
+    div[data-testid="stAppViewToolbar"] {
         display: none !important;
         visibility: hidden !important;
+        opacity: 0 !important;
         height: 0 !important;
+        width: 0 !important;
+        pointer-events: none !important;
     }
 
-    /* 3. 强制移除右下角所有悬浮层 */
-    [data-testid="stAppViewToolbar"],
-    .stAppDeployButton {
-        display: none !important;
+    /* 3. 移除页面顶部所有由于隐藏导致的空白 */
+    .block-container {
+        padding-top: 0rem !important;
+        padding-bottom: 0rem !important;
     }
 
-    /* 4. 解决网站加载慢导致的“皇冠先出”问题 */
-    /* 隐藏所有带透明度的绝对定位容器（皇冠通常在里面） */
+    /* 4. 暴力手段：隐藏屏幕右下角所有可能的悬浮元素 */
+    #streamlit_cloud_host_floating_container,
     .stApp > div:last-child {
         display: none !important;
     }
