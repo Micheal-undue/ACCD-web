@@ -14,46 +14,31 @@ st.set_page_config(
 # 极致隐藏版 CSS
 hide_style = """
     <style>
-    /* 1. 隐藏顶部 Header 和菜单 */
-    header[data-testid="stHeader"] {
-        display: none !important;
-    }
-    
-    /* 2. 隐藏侧边栏及其控制按钮 */
+    /* 1. 隐藏顶栏、侧边栏和页脚 */
+    header[data-testid="stHeader"], 
     section[data-testid="stSidebar"], 
-    button[data-testid="stSidebarCollapsedControl"] {
-        display: none !important;
-    }
-
-    /* 3. 隐藏底部 "Made with Streamlit" */
+    button[data-testid="stSidebarCollapsedControl"],
     footer {
         display: none !important;
     }
 
-    /* 4. 【核心突破】强力清除右下角管理/部署按钮 */
-    /* 针对所有包含 'Deploy' 或 'Toolbar' 字样的容器进行拦截 */
+    /* 2. 【核心突破】针对你查到的源码类名进行精准爆破 */
+    /* 隐藏带有 viewerBadge 和 profileContainer 的所有容器 */
+    [class*="viewerBadge"],
+    [class*="profileContainer"],
     [data-testid="stAppViewToolbar"],
-    .stAppDeployButton,
-    .stDeployButton,
-    div[class*="stAppDeployButton"],
-    div[class*="DeployButton"],
-    div[class*="viewerBadge"] {
+    .stAppDeployButton {
         display: none !important;
         visibility: hidden !important;
-        height: 0 !important;
-        width: 0 !important;
-        opacity: 0 !important;
-        pointer-events: none !important;
     }
 
-    /* 5. 针对移动端可能出现的悬浮管理层 */
-    #streamlit_cloud_host_floating_container,
-    .st-emotion-cache-1wbqy5l, /* 某些版本中的特定类名 */
+    /* 3. 极致填充：消除所有可能的侧边栏残留和管理入口 */
+    iframe[title="Manage app"], 
     [aria-label="Manage app"] {
         display: none !important;
     }
 
-    /* 6. 移除页面边距 */
+    /* 4. 优化页面间距 */
     .block-container {
         padding-top: 0rem !important;
         padding-bottom: 0rem !important;
