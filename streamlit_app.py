@@ -3,15 +3,46 @@ import streamlit as st
 from components.navbar import navbar
 import textwrap 
 
-# =============================
-# Page Configuration
-# =============================
+# 1. 必须是第一个 Streamlit 命令！且只保留这一个配置
 st.set_page_config(
-    page_title="ACDC 2026 | ASEAN-CHINA " \
-    "Regional Cooperation & Development Forum" \
-    "2026(ACCD'26)",
-    layout="wide"
+    page_title="ACCD 2026 | ASEAN-CHINA Regional Cooperation & Development Forum",
+    layout="wide",
+    initial_sidebar_state="collapsed" # 初始状态设为折叠
 )
+
+# 2. 增强版隐藏 CSS (强制隐藏所有开发痕迹)
+hide_style = """
+    <style>
+    /* 隐藏顶部 Header (包含 Github 图标, Fork, 菜单按钮) */
+    header[data-testid="stHeader"] {
+        display: none !important;
+    }
+    
+    /* 隐藏侧边栏整体 */
+    section[data-testid="stSidebar"] {
+        display: none !important;
+    }
+    
+    /* 隐藏侧边栏那个可以拉出来的“左箭头”按钮 */
+    button[data-testid="stSidebarCollapsedControl"] {
+        display: none !important;
+    }
+
+    /* 隐藏底部的 "Made with Streamlit" */
+    footer {
+        display: none !important;
+    }
+    
+    /* 移除页面顶部多余的空白 */
+    .block-container {
+        padding-top: 0rem !important;
+        padding-bottom: 0rem !important;
+    }
+    </style>
+"""
+
+st.markdown(hide_style, unsafe_allow_html=True)
+
 
 # =============================
 # Helper: Convert image to base64
