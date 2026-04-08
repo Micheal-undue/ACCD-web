@@ -10,44 +10,56 @@ st.set_page_config(
     initial_sidebar_state="collapsed" # 初始状态设为折叠
 )
 
-# 极致隐藏方案：针对动态 ID 和云端容器
+# 深度清理 Streamlit Cloud 专用组件
+# 极致隐藏版 CSS
 hide_style = """
     <style>
-    /* 1. 隐藏顶栏、侧边栏和官方页脚 */
-    header[data-testid="stHeader"], 
+    /* 1. 隐藏顶部 Header 和菜单 */
+    header[data-testid="stHeader"] {
+        display: none !important;
+    }
+    
+    /* 2. 隐藏侧边栏及其控制按钮 */
     section[data-testid="stSidebar"], 
+    button[data-testid="stSidebarCollapsedControl"] {
+        display: none !important;
+    }
+
+    /* 3. 隐藏底部 "Made with Streamlit" */
     footer {
         display: none !important;
     }
 
-    /* 2. 针对你源码中查到的 viewerBadge 和 profileContainer 进行模糊匹配 */
-    /* 使用 *= 确保只要类名包含这些关键词就会被隐藏 */
-    [class*="viewerBadge"],
-    [class*="profileContainer"],
-    [class*="managed-"],
-    div[data-testid="stAppViewToolbar"] {
+    /* 4. 【核心突破】强力清除右下角管理/部署按钮 */
+    /* 针对所有包含 'Deploy' 或 'Toolbar' 字样的容器进行拦截 */
+    [data-testid="stAppViewToolbar"],
+    .stAppDeployButton,
+    .stDeployButton,
+    div[class*="stAppDeployButton"],
+    div[class*="DeployButton"],
+    div[class*="viewerBadge"] {
         display: none !important;
         visibility: hidden !important;
-        opacity: 0 !important;
         height: 0 !important;
         width: 0 !important;
+        opacity: 0 !important;
         pointer-events: none !important;
     }
 
-    /* 3. 移除页面顶部所有由于隐藏导致的空白 */
+    /* 5. 针对移动端可能出现的悬浮管理层 */
+    #streamlit_cloud_host_floating_container,
+    .st-emotion-cache-1wbqy5l, /* 某些版本中的特定类名 */
+    [aria-label="Manage app"] {
+        display: none !important;
+    }
+
+    /* 6. 移除页面边距 */
     .block-container {
         padding-top: 0rem !important;
         padding-bottom: 0rem !important;
     }
-
-    /* 4. 暴力手段：隐藏屏幕右下角所有可能的悬浮元素 */
-    #streamlit_cloud_host_floating_container,
-    .stApp > div:last-child {
-        display: none !important;
-    }
     </style>
 """
-
 
 st.markdown(hide_style, unsafe_allow_html=True)
 
