@@ -14,34 +14,34 @@ st.set_page_config(
 # 极致隐藏版 CSS
 hide_style = """
     <style>
-    /* 1. 隐藏顶栏、侧边栏和页脚 */
+    /* 1. 隐藏所有基础组件 */
     header[data-testid="stHeader"], 
     section[data-testid="stSidebar"], 
-    button[data-testid="stSidebarCollapsedControl"],
     footer {
         display: none !important;
     }
 
-    /* 2. 【核心突破】针对你查到的源码类名进行精准爆破 */
-    /* 隐藏带有 viewerBadge 和 profileContainer 的所有容器 */
-    [class*="viewerBadge"],
-    [class*="profileContainer"],
+    /* 2. 针对你截图中的类名进行模糊匹配拦截 */
+    /* 匹配所有类名中包含 viewerBadge 或 profileContainer 的元素 */
+    div[class*="viewerBadge"],
+    a[class*="viewerBadge"],
+    div[class*="profileContainer"],
+    div[class*="managed-"] {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+    }
+
+    /* 3. 强制移除右下角所有悬浮层 */
     [data-testid="stAppViewToolbar"],
     .stAppDeployButton {
         display: none !important;
-        visibility: hidden !important;
     }
 
-    /* 3. 极致填充：消除所有可能的侧边栏残留和管理入口 */
-    iframe[title="Manage app"], 
-    [aria-label="Manage app"] {
+    /* 4. 解决网站加载慢导致的“皇冠先出”问题 */
+    /* 隐藏所有带透明度的绝对定位容器（皇冠通常在里面） */
+    .stApp > div:last-child {
         display: none !important;
-    }
-
-    /* 4. 优化页面间距 */
-    .block-container {
-        padding-top: 0rem !important;
-        padding-bottom: 0rem !important;
     }
     </style>
 """
