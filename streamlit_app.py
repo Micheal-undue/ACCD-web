@@ -3,14 +3,14 @@ import streamlit as st
 from components.navbar import navbar
 import textwrap 
 
-# 1. 必须是第一个 Streamlit 命令！且只保留这一个配置
+
 st.set_page_config(
     page_title="ACCD 2026 | ASEAN-CHINA Regional Cooperation & Development Forum",
     layout="wide",
     initial_sidebar_state="collapsed" # 初始状态设为折叠
 )
 
-# 2. 增强版隐藏 CSS (强制隐藏所有开发痕迹)
+# 2. 增强版隐藏 CSS (进一步清理右下角管理按钮)
 hide_style = """
     <style>
     /* 隐藏顶部 Header (包含 Github 图标, Fork, 菜单按钮) */
@@ -32,7 +32,17 @@ hide_style = """
     footer {
         display: none !important;
     }
+
+    /* 【新增】隐藏右下角的 "Manage app" 悬浮按钮 */
+    div[data-testid="stAppViewToolbar"] {
+        display: none !important;
+    }
     
+    /* 【新增】彻底隐藏右上角的三个点菜单 */
+    #MainMenu {
+        visibility: hidden;
+    }
+
     /* 移除页面顶部多余的空白 */
     .block-container {
         padding-top: 0rem !important;
