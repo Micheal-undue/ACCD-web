@@ -10,20 +10,16 @@ st.set_page_config(
     initial_sidebar_state="collapsed" # 初始状态设为折叠
 )
 
-# 2. 增强版隐藏 CSS (进一步清理右下角管理按钮)
+# 2. 终极版隐藏 CSS (针对所有可能的工具栏标识符)
 hide_style = """
     <style>
-    /* 隐藏顶部 Header (包含 Github 图标, Fork, 菜单按钮) */
+    /* 隐藏顶部 Header */
     header[data-testid="stHeader"] {
         display: none !important;
     }
     
-    /* 隐藏侧边栏整体 */
-    section[data-testid="stSidebar"] {
-        display: none !important;
-    }
-    
-    /* 隐藏侧边栏那个可以拉出来的“左箭头”按钮 */
+    /* 隐藏侧边栏及其控制按钮 */
+    section[data-testid="stSidebar"], 
     button[data-testid="stSidebarCollapsedControl"] {
         display: none !important;
     }
@@ -33,14 +29,18 @@ hide_style = """
         display: none !important;
     }
 
-    /* 【新增】隐藏右下角的 "Manage app" 悬浮按钮 */
-    div[data-testid="stAppViewToolbar"] {
+    /* 【核心修改】多重锁定隐藏右下角 Manage app 按钮和工具栏 */
+    div[data-testid="stAppViewToolbar"], 
+    .stAppToolbar, 
+    [data-testid="stToolbar"],
+    .stDeployButton {
         display: none !important;
+        visibility: hidden !important;
     }
     
-    /* 【新增】彻底隐藏右上角的三个点菜单 */
+    /* 彻底隐藏右上角的三个点菜单 */
     #MainMenu {
-        visibility: hidden;
+        display: none !important;
     }
 
     /* 移除页面顶部多余的空白 */
