@@ -14,7 +14,7 @@ st.markdown("---")
 # Contact Info
 st.markdown("""
 <div style='text-align:left; font-size:18px;'>
-<strong>Email:</strong> @ukm.edu.my
+<strong>Email:</strong> accd2626@gmail.com
 </div>
 """, unsafe_allow_html=True)
 

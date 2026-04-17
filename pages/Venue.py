@@ -61,10 +61,10 @@ with col_right:
         st.image("assets/venue_2.jpg", use_container_width=True)
         st.image("assets/venue_4.jpg", use_container_width=True)
 
-
+st.markdown("---")
 
 # =========================
-# 工具函数：统一图片视觉高度 (透明背景版)
+# 工具函数：统一图片视觉高度 
 # =========================
 def uniform_image(path, height="250px"):
     """
@@ -90,9 +90,9 @@ def uniform_image(path, height="250px"):
         st.error(f"Image not found: {path}")
 
 # ==========================================================
-# 🏨 Featured Hotels | 精选酒店 (完整美化版)
+# 🏨 Featured Hotels 
 # ==========================================================
-st.markdown("<h3 style='text-align:center; margin-top:50px;'>Featured Hotels | 精选酒店</h3>", unsafe_allow_html=True)
+st.markdown("<h3 style='text-align:center; margin-top:50px;'>Featured Hotels</h3>", unsafe_allow_html=True)
 
 # 辅助函数：专门用于居中标题和简介
 def centered_hotel_info(title, subtitle=""):
@@ -102,23 +102,6 @@ def centered_hotel_info(title, subtitle=""):
             <span style='font-size: 14px; color: #666;'>{subtitle}</span>
         </div>
     """, unsafe_allow_html=True)
-
-# =========================
-# Hotel 1
-# =========================
-st.markdown("<h4 style='text-align:center; margin-top:30px;'>TENERA HOTEL & SUITES BANGI (AS OF APRIL 2026) (4-STAR RATING)</h4>", unsafe_allow_html=True)
-col1, col2 = st.columns([1, 1])
-
-with col1:
-    centered_hotel_info("STANDARD KING ", "RM 300 PER NIGHT WITH BREAKFAST (TAX NOT INCLUDED)")
-    uniform_image("assets/hotel1_single.png", height="280px")
-
-with col2:
-    centered_hotel_info("SUPERIOR TWIN", " RM 300 PER NIGHT WITH BREAKFAST (TAX NOT INCLUDED)")
-    uniform_image("assets/hotel1_double.png", height="280px")
-
-st.markdown("---")
-
 
 # =========================
 # Hotel 2
@@ -141,6 +124,25 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.markdown("---")
+
+
+# =========================
+# Hotel 1
+# =========================
+st.markdown("<h4 style='text-align:center; margin-top:30px;'>TENERA HOTEL & SUITES BANGI (AS OF APRIL 2026) (4-STAR RATING)</h4>", unsafe_allow_html=True)
+col1, col2 = st.columns([1, 1])
+
+with col1:
+    centered_hotel_info("STANDARD KING ", "RM 300 PER NIGHT WITH BREAKFAST (TAX NOT INCLUDED)")
+    uniform_image("assets/hotel1_single.png", height="280px")
+
+with col2:
+    centered_hotel_info("SUPERIOR TWIN", " RM 300 PER NIGHT WITH BREAKFAST (TAX NOT INCLUDED)")
+    uniform_image("assets/hotel1_double.png", height="280px")
+
+st.markdown("---")
+
+
 
 
 # =========================
@@ -177,18 +179,13 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
+st.markdown("---")
 
 # ==========================================================
-# 3️⃣ Must-Visit Destinations | 必去景点 (网格大图版)
+# 3️⃣ Must-Visit Destinations 
 # ==========================================================
 # 假设图片存放在 assets 文件夹下
-DEST_1_B64 = get_base64_image("assets/dest_klcc.jpg")
-DEST_2_B64 = get_base64_image("assets/dest_aquaria.jpg")
-DEST_3_B64 = get_base64_image("assets/dest_twin_towers.jpg")
-DEST_4_B64 = get_base64_image("assets/dest_putrajaya.jpg")
-DEST_5_B64 = get_base64_image("assets/dest_batu_caves.jpg")
-DEST_6_B64 = get_base64_image("assets/dest_central_market.jpg")
-DEST_7_B64 = get_base64_image("assets/dest_genting.jpg")
+
 
 
 st.markdown("<h3 style='text-align:center; margin-top:50px;'>Must-Visit Destinations</h3>", unsafe_allow_html=True)

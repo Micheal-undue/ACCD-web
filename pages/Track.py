@@ -9,7 +9,7 @@ navbar()
 
 
 # ===== PAGE CONTENT =====
-st.markdown("## Track & Selection")
+st.markdown("## Themes")
 st.markdown("---")
 
 st.write("""
@@ -21,12 +21,6 @@ st.write("""
 - Cultural & Tourism Exchange  
   
 
-- 数字经济与技术  
-- 贸易与投资  
-- 可持续发展目标与可持续生活方式  
-- 创业与创新  
-- 绿色经济  
-- 文化与旅游交流
 """)
 
 

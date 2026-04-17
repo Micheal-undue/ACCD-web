@@ -120,7 +120,13 @@ LOGO25_BASE64 = get_base64_image(LOGO25)
 LOGO26_BASE64 = get_base64_image(LOGO26)
 LOGO27_BASE64 = get_base64_image(LOGO27)
 
-
+DEST_1_B64 = get_base64_image("assets/dest_klcc.jpg")
+DEST_2_B64 = get_base64_image("assets/dest_aquaria.jpg")
+DEST_3_B64 = get_base64_image("assets/dest_twin_towers.jpg")
+DEST_4_B64 = get_base64_image("assets/dest_putrajaya.jpg")
+DEST_5_B64 = get_base64_image("assets/dest_batu_caves.jpg")
+DEST_6_B64 = get_base64_image("assets/dest_central_market.jpg")
+DEST_7_B64 = get_base64_image("assets/dest_genting.jpg")
 
 # =============================
 # Global CSS
@@ -322,7 +328,7 @@ st.markdown("""
     </p>
     <p>
         📍 Universiti Kebangsaan Malaysia &nbsp;&nbsp; | &nbsp;&nbsp;
-        🗓 October 2026 &nbsp;&nbsp; | &nbsp;&nbsp;
+        🗓 2nd until 5th November 2026 &nbsp;&nbsp; | &nbsp;&nbsp;
         🌏 ASEAN · China · Malaysia
     </p>
 </div>
