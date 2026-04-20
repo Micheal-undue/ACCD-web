@@ -1,7 +1,7 @@
 import streamlit as st
 from components.navbar import navbar
 
-st.set_page_config(page_title="About | ACDC 2026", layout="wide")
+st.set_page_config(page_title="About | ACCD 2026", layout="wide")
 
 navbar()
 

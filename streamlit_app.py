@@ -96,6 +96,11 @@ LOGO24 = "assets/UGUK.jpg"
 LOGO25 = "assets/SME.jpg"
 LOGO26 = "assets/MFC.jpg"
 LOGO27 = "assets/AUT.jpg"
+LOGO28 = "assets/MCEB.png"
+
+
+SPEAKER1_PATH = "assets/speaker1.jpg" 
+SPEAKER2_PATH = "assets/speaker2.jpg"
 
 
 BG_BASE64 = get_base64_image(BG_PATH)
@@ -119,6 +124,7 @@ LOGO24_BASE64 = get_base64_image(LOGO24)
 LOGO25_BASE64 = get_base64_image(LOGO25)
 LOGO26_BASE64 = get_base64_image(LOGO26)
 LOGO27_BASE64 = get_base64_image(LOGO27)
+LOGO28_BASE64 = get_base64_image(LOGO28)
 
 DEST_1_B64 = get_base64_image("assets/dest_klcc.jpg")
 DEST_2_B64 = get_base64_image("assets/dest_aquaria.jpg")
@@ -127,6 +133,11 @@ DEST_4_B64 = get_base64_image("assets/dest_putrajaya.jpg")
 DEST_5_B64 = get_base64_image("assets/dest_batu_caves.jpg")
 DEST_6_B64 = get_base64_image("assets/dest_central_market.jpg")
 DEST_7_B64 = get_base64_image("assets/dest_genting.jpg")
+
+
+SPEAKER1_B64 = get_base64_image(SPEAKER1_PATH)
+SPEAKER2_B64 = get_base64_image(SPEAKER2_PATH)
+
 
 # =============================
 # Global CSS
@@ -175,27 +186,66 @@ body {{
     margin-top: 18px;
 }}
 
-/* ---------- LOGO ---------- */
+/* ----------  Logo 卡片 ---------- */
 .logo-section {{
-    padding: 50px 20px;
-    background: #f9f9f9;
+    padding: 60px 20px;
+    background: #fdfdfd; /* 极淡的底色，衬托白色卡片 */
 }}
+
 .logo-row {{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 40px;
+    gap: 25px; /* 卡片之间的间距 */
     flex-wrap: wrap;
 }}
+
 .logo-box {{
+    /* 核心修复：所有卡片固定尺寸 */
+    width: 220px;  
+    height: 130px;
+    
     background: white;
-    padding: 18px 28px;
-    border-radius: 14px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-radius: 16px; /* 稍微大一点的圆角更现代 */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.05); /* 柔和的阴影 */
+    border: 1px solid #f0f0f0; /* 淡淡的边框线，增加质感 */
+    
+    /* 居中里面的图片 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px; 
+    transition: transform 0.3s ease;
 }}
+
+/* 悬停动画 */
+.logo-box:hover {{
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}}
+
 .logo-box img {{
-    max-height: 70px;
+    /* 图片默认大小限制 */
+    max-width: 85%;
+    max-height: 65px; 
+    object-fit: contain;
     display: block;
+}}
+/* ---------- 针对性大小调整 ---------- */
+
+/* 1. 变小 */
+.logo-box:nth-child(2) img {{
+    max-height: 60px; /* 从 70 调小到 50 */
+}}
+
+/* 2. 变大 */
+.logo-box:nth-child(1) img {{
+    max-height: 95px; /* 从 70 调大到 95 */
+}}
+.logo-box:nth-child(3) img,
+.logo-box:nth-child(4) img
+ {{
+    max-height: 80px; /* 从 70 调大到 95 */
 }}
 
 /* ---------- SECTIONS ---------- */
@@ -228,7 +278,6 @@ body {{
     background-color: #b00020;
     margin: 28px auto;
 }}
-
 
 
 /* ---------- CARDS ---------- */
@@ -297,16 +346,51 @@ body {{
     margin-bottom: 15px;
 }}
 
+/* ---------- SPEAKERS CARDS ---------- */
+.speaker-card {{
+    background: #ffffff;
+    border: 1px solid #f0f2f6;
+    border-radius: 20px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}}
+
+.speaker-card:hover {{
+    transform: translateY(-5px);
+    border-color: #b00020;
+}}
+
+.details-link {{
+    display: inline-block;
+    background-color: #e8f0fe;
+    color: #0b1f3a !important;
+    padding: 10px 15px;
+    border-radius: 10px;
+    text-decoration: none !important;
+    font-size: 24px;
+    margin: 15px 0;
+    line-height: 1;
+}}
+
+.details-link:hover {{
+    background-color: #0b1f3a;
+    color: #ffffff !important;
+}}
+
 
 </style>
 """, unsafe_allow_html=True)
 
+
 # =============================
 # Top Navigation Bar (Clickable)
 # =============================
-
-
-
 # 引入导航栏
 navbar()
 
@@ -341,19 +425,19 @@ st.markdown(f"""
 <div class="logo-section">
     <div class="logo-row">
         <div class="logo-box">
-            <img src="data:image/jpg;base64,{LOGO2_BASE64}" alt="logo2">
+            <img src="data:image/jpg;base64,{LOGO3_BASE64}" alt="logo2">
         </div>
         <div class="logo-box">
-            <img src="data:image/jpg;base64,{LOGO14_BASE64}" alt="logo3">
+            <img src="data:image/jpg;base64,{LOGO14_BASE64}" alt="logo14">
         </div>
         <div class="logo-box">
-            <img src="data:image/png;base64,{LOGO3_BASE64}" alt="logo5">
+            <img src="data:image/png;base64,{LOGO2_BASE64}" alt="logo3">
         </div>
         <div class="logo-box">
-            <img src="data:image/png;base64,{LOGO21_BASE64}" alt="logo4">
+            <img src="data:image/png;base64,{LOGO21_BASE64}" alt="logo21">
         </div>
         <div class="logo-box">
-            <img src="data:image/png;base64,{LOGO6_BASE64}" alt="logo5">
+            <img src="data:image/png;base64,{LOGO6_BASE64}" alt="logo6">
         </div>
     </div>
 </div>
@@ -380,6 +464,51 @@ st.markdown("""
 
 
 # =============================
+# Keynote Speakers Section
+# =============================
+st.markdown("""
+<div class="section center" style="padding-bottom: 20px;">
+    <div class="section-title">Keynote Speakers</div>
+    <div class="divider"></div>
+</div>
+""", unsafe_allow_html=True)
+
+# 1. 定义数据列表 (方便后续增加人数)
+speakers = [
+    {
+        "name": "Prof. Ming-Lang Tseng",
+        "image": SPEAKER1_B64
+    },
+    {
+        "name": "Professor Dr. Ming Lim",
+        "image": SPEAKER2_B64
+    }
+]
+
+# 2. 创建容器列
+# 如果只有 2 个人，我们用 [1, 1] 比例，并外层套一个居中的 col 以美化布局
+empty_l, col1, col2, empty_r = st.columns([1, 2, 2, 1])
+
+with col1:
+    st.markdown(f"""
+    <div class="speaker-card">
+        <img src="data:image/jpg;base64,{speakers[0]['image']}" style="width:200px; height:200px; border-radius:50%; object-fit:cover; border:3px solid #f0f2f6;">
+        <a href="/Committee" target="_self" class="details-link">📇</a>
+        <div class="speaker-name">{speakers[0]['name']}</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+with col2:
+    st.markdown(f"""
+    <div class="speaker-card">
+        <img src="data:image/jpg;base64,{speakers[1]['image']}" style="width:200px; height:200px; border-radius:50%; object-fit:cover; border:3px solid #f0f2f6;">
+        <a href="/Committee" target="_self" class="details-link">📇</a>
+        <div class="speaker-name">{speakers[1]['name']}</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+
+# =============================
 # Key Focus Areas (Refined from Objectives)
 # =============================
 st.markdown("""
@@ -387,33 +516,55 @@ st.markdown("""
     <div class="section-title">Objectives of ACCD'26</div>
     <div class="divider"></div>
 </div>
+<style>
+    .card-fix {
+        min-height: 250px; /* 适当增加高度以确保空间充裕 */
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* 关键：这会让内容在垂直方向居中 */
+        align-items: center;
+        text-align: center;
+        padding: 25px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+    }
+    
+    /* 确保标题和段落没有过大的默认边距干扰居中 */
+    .card-fix h4 {
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+    .card-fix p {
+        margin-bottom: 0;
+    }
+</style>
 """, unsafe_allow_html=True)
 
 focus_items = [
-    ("Academic Collaboration",
-     "Strengthen Malaysia-China and ASEANacademic collaboration through jointresearch and cultural education initiatives"),
-    
+    ("Technology & Academic Collaboration",
+     "Establish joint research centres, Master/PhD programmes, and academic exchanges through the ASEAN-China Regional Cooperation Development Alliance."),
+
     ("Economic Linkages",
-     "Enhance Malaysia-China and ASEANeconomic linkages by connecting enterprises,markets, and regional business networks"),
-    
-    ("Industry - Academia",
-     "Promote industry-academia-government integrationto build a sustainable cooperation ecosystem"),
-    
-    ("Economy Opportunities",
-     "Support enterprises in navigating Malaysia'sinvestment landscape, policies,and digital economy opportunities"),
-    
-    ("Cross - Border Business",
-     "Facilitate structured cross-border business matchingamong companies, chambers, and public agencies"),
-    
-    ("Long - Term Cooperation",
-     "Harbin–ASEAN corridors, ice & snow economy, green energy, youth entrepreneurship, cross-border e-commerce, SME incubators, annual ACCD conference")
+     "Leverage UKM as an ASEAN gateway to connect Harbin and Chinese enterprises with regional markets and government-business networks."),
+
+    ("Industry-Academia-Society",
+     "Integrate resources from enterprises, universities, and chambers to build a sustainable cooperation ecosystem and social development."),
+
+    ("Business Environment & Policy",
+     "Navigate tax incentives, investment policies, and the MyDIGITAL blueprint to support foreign investment and free trade zone access."),
+
+    ("Technologies Exchange",
+     "Facilitate tech transfer among China and ASEAN, focusing on AI application in e-commerce, new media, and digital business models."),
+
+    ("Business Matching Opportunities",
+     "Structured matching between Chinese enterprises and Malaysian chambers, companies, and government agencies to foster bilateral growth.")
 ]
 
 cols = st.columns(3)
 for i, item in enumerate(focus_items):
     with cols[i % 3]:
         st.markdown(f"""
-        <div class="card center">
+        <div class="card center card-fix">
             <h4>{item[0]}</h4>
             <p>{item[1]}</p>
         </div>
@@ -421,86 +572,65 @@ for i, item in enumerate(focus_items):
 
 
 
-
 # =============================
-# Programme Structure (Refined)
+# Programme Structure (Refined to 4 Pillars)
 # =============================
 st.markdown("""
 <div class="section center">
-    <div class="section-title">Programme Structure </div>
+    <div class="section-title">Programme Structure</div>
     <div class="divider"></div>
 </div>
+<style>
+    .prog-card {
+        min-height: 280px; /* 统一高度确保对齐 */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    .prog-card h4 { color: #FF4B4B; margin-bottom: 5px; }
+    .prog-card strong { display: block; margin-bottom: 10px; font-size: 1.1em; }
+    .prog-card p { font-size: 0.95em; line-height: 1.5; }
+</style>
 """, unsafe_allow_html=True)
 
+# 重新整合后的 4 个板块内容
 programme = [
-    ("Day 1", "Academic Conference Day",
-     "Keynote forums, doctoral clinic, roundtables & parallel paper sessions<br/>"
-     "Academic exchange, doctoral mentoring & research collaboration<br/>"),
+    ("Days 1 & 2", "Grand Opening & Academic Summit",
+     "<b>Nov 2-3:</b> Opening Ceremony & Keynote Forums.<br/>"
+     "Roundtable sessions, doctoral clinics & paper presentations.<br/>"
+     "<i>Parallel Exhibition open.</i>"),
 
-    ("Day 2", "Policy & Industry Engagement",
-     "Opening ceremony, policy briefings, corporate & government keynotes<br/>"
-     "Business policy, tourism cooperation & regulatory insights<br/>"),
-
-    ("Day 3", "Business & Government Matching",
-     "Enterprise, chamber & government matching sessions<br/>"
-     "Targeted networking, partnership building & investment dialogue"),
+    ("Day 3", "Policy & Business Matching",
+     "<b>Nov 4:</b> Strategic briefings by MATRADE, JAKIM & Tourism.<br/>"
+     "China-Malaysia enterprise, chamber & government matching.<br/>"
+     "<i>Parallel Exhibition open.</i>"),
 
     ("Day 4", "Institutional & Innovation Visits",
-     "Government agencies, tech parks & digital economy institutions<br/>"
-     "Trade facilitation, innovation ecosystems & investment environment"),
+     "<b>Nov 5:</b> Field visits to MATRADE & SME Association.<br/>"
+     "UKM/UPM Research Institutes & Huawei corporate tech tours.<br/>"
+     "Insights into trade facilitation & digital economy."),
 
-    ("Day 5", "Culture & City Experience",
-     "KLCC, Putrajaya, Central Market & heritage city tour<br/>"
-     "Cultural exchange, tourism exploration & urban engagement"),
-
-    ("Days 1–3", "Exhibition (Parallel)",
-     "Industry, technology, cultural & education exhibitions<br/>"
-     "Showcasing innovation, industry and academic cooperation")
+    ("Day 5", "Culture & Heritage Experience",
+     "<b>Nov 6:</b> Full-day cultural engagement & Melaka historical tour.<br/>"
+     "KL city landmarks: KLCC, Putrajaya, Central Market & Batu Caves.<br/>"
+     "Deepening regional cultural and tourism bonds.")
 ]
 
-prog_cols = st.columns(3)
+# 采用 2列 x 2行 的布局，视觉上更平衡
+prog_cols = st.columns(2)
 for i, item in enumerate(programme):
-    with prog_cols[i % 3]:
+    with prog_cols[i % 2]:
         st.markdown(f"""
-        <div class="card center">
+        <div class="card center prog-card">
             <h4>{item[0]}</h4>
             <strong>{item[1]}</strong>
             <p>{item[2]}</p>
         </div>
         """, unsafe_allow_html=True)
-
-
-
-# =============================
-# Conference Fees (Card Style)
-# =============================
-st.markdown("""
-<div class="section center">
-    <div class="section-title">Conference Fees</div>
-    <div class="divider"></div>
-</div>
-""", unsafe_allow_html=True)
-
-fees = [
-    ("Student (Malaysia)", "RM 600 / RM 300", "Local student presenter / participant"),
-    ("International Student (Early-Bird)", "USD 150 / USD 100", "Discounted early registration"),
-    ("International Student", "USD 200 / USD 150", "Standard student rate"),
-    ("Regular (Early-Bird)", "USD 300 / USD 150", "Early-bird professional rate"),
-    ("Regular", "USD 350 / USD 200", "Standard professional rate")
-]
-
-fee_cols = st.columns(3)
-
-for i, item in enumerate(fees):
-    with fee_cols[i % 3]:
-        st.markdown(f"""
-        <div class="card center">
-            <h4>{item[0]}</h4>
-            <strong>{item[1]}</strong>
-            <p>{item[2]}</p>
-        </div>
-        """, unsafe_allow_html=True)
-
 
 
 
@@ -513,55 +643,91 @@ html_content = f"""
 <div class="section-title">Hosted & Co-organised By</div>
 <div class="divider"></div>
 <div class="host-block">
+
 <div class="host-single" style="display: flex; flex-direction: column; align-items: center; margin-bottom: 50px;">
 <h4 style="margin-bottom: 20px;">Hosted By</h4>
-<img src="data:image/png;base64,{LOGO11_BASE64}" style="max-height: 80px; margin-bottom: 10px;">
-<div style="font-size: 16px;">Malaysia–China Higher Education Exchange Association (PPTMC)</div>
+<div style="height: 100px; display: flex; align-items: center; justify-content: center;">
+<img src="data:image/png;base64,{LOGO11_BASE64}" style="height: 100px; object-fit: contain;">
 </div>
+<div style="font-size: 16px; margin-top: 10px;">Malaysia–China Higher Education Exchange Association (PPTMC)</div>
+</div>
+
 <h4 style="margin-bottom: 30px;">Co-organised By</h4>
 <div class="host-row" style="display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; margin-bottom: 80px;">
 <div style="display: flex; flex-direction: column; align-items: center; width: 250px;">
-<img src="data:image/jpg;base64,{LOGO14_BASE64}" style="max-height: 80px; margin-bottom: 10px;">
-<div style="text-align: center;">UKM Institute of Visual Informatics</div>
+<div style="height: 120px; display: flex; align-items: center; justify-content: center;">
+<img src="data:image/jpg;base64,{LOGO14_BASE64}" style="height: 120px; object-fit: contain; padding: 25px 0;">
+</div>
+<div style="text-align: center; margin-top: 10px;">UKM Institute of Visual Informatics</div>
 </div>
 <div style="display: flex; flex-direction: column; align-items: center; width: 250px;">
-<img src="data:image/jpg;base64,{LOGO21_BASE64}" style="max-height: 80px; margin-bottom: 10px;">
-<div style="text-align: center;">Harbin Normal University (HNU)</div>
+<div style="height: 120px; display: flex; align-items: center; justify-content: center;">
+<img src="data:image/jpg;base64,{LOGO21_BASE64}" style="height: 120px; object-fit: contain;">
+</div>
+<div style="text-align: center; margin-top: 10px;">Harbin Normal University (HNU)</div>
 </div>
 </div>
 
 <div style="margin-top: 50px;">
 <h4 style="margin-bottom: 40px;">Potential Co-Partners</h4>
 <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; max-width: 1000px; margin: 0 auto;">
-<div style="display: flex; flex-direction: column; align-items: center; flex: 0 0 30%; margin-bottom: 40px;">
-<img src="data:image/jpg;base64,{LOGO13_BASE64}" style="max-height: 75px; margin-bottom: 15px;">
-<div style="font-size: 14px; font-weight: 500;">Harbin University of Commerce</div>
+
+<div style="display: flex; flex-direction: column; align-items: center; flex: 0 0 22%; margin-bottom: 40px;">
+<div style="height: 150px; display: flex; align-items: center; justify-content: center;">
+<img src="data:image/jpg;base64,{LOGO13_BASE64}" style="height: 80px; object-fit: contain;">
 </div>
-<div style="display: flex; flex-direction: column; align-items: center; flex: 0 0 30%; margin-bottom: 40px;">
-<img src="data:image/jpg;base64,{LOGO22_BASE64}" style="max-height: 75px; margin-bottom: 15px;">
-<div style="font-size: 14px; font-weight: 500;">MATRADE (Tentative)</div>
+<div style="font-size: 14px; font-weight: 500; text-align: center; margin-top: 10px;">Harbin University of Commerce</div>
 </div>
-<div style="display: flex; flex-direction: column; align-items: center; flex: 0 0 30%; margin-bottom: 40px;">
-<img src="data:image/jpg;base64,{LOGO23_BASE64}" style="max-height: 75px; margin-bottom: 15px;">
-<div style="font-size: 14px; font-weight: 500;">World Research Travel Organisation</div>
+
+<div style="display: flex; flex-direction: column; align-items: center; flex: 0 0 22%; margin-bottom: 40px;">
+<div style="height: 150px; display: flex; align-items: center; justify-content: center;">
+<img src="data:image/jpg;base64,{LOGO22_BASE64}" style="height: 150px; object-fit: contain;">
+</div>
+<div style="font-size: 14px; font-weight: 500; text-align: center; margin-top: 10px;">MATRADE (Tentative)</div>
+</div>
+
+<div style="display: flex; flex-direction: column; align-items: center; flex: 0 0 22%; margin-bottom: 40px;">
+<div style="height: 150px; display: flex; align-items: center; justify-content: center;">
+<img src="data:image/jpg;base64,{LOGO23_BASE64}" style="height: 150px; object-fit: contain;">
+</div>
+<div style="font-size: 14px; font-weight: 500; text-align: center; margin-top: 10px;">World Research Travel Organisation</div>
+</div>
+
+<div style="display: flex; flex-direction: column; align-items: center; flex: 0 0 22%; margin-bottom: 40px;">
+<div style="height: 150px; display: flex; align-items: center; justify-content: center;">
+<img src="data:image/jpg;base64,{LOGO24_BASE64}" style="height: 150px; object-fit: contain;">
+</div>
+<div style="font-size: 13px; text-align: center; margin-top: 10px;">University of Glasgow</div>
 </div>
 
 <div style="display: flex; flex-direction: column; align-items: center; flex: 0 0 22%; margin-bottom: 30px;">
-<img src="data:image/jpg;base64,{LOGO24_BASE64}" style="max-height: 65px; margin-bottom: 15px;">
-<div style="font-size: 13px;">University of Glasgow</div>
+<div style="height: 150px; display: flex; align-items: center; justify-content: center;">
+<img src="data:image/jpg;base64,{LOGO25_BASE64}" style="height: 150px; object-fit: contain;">
 </div>
+<div style="font-size: 13px; text-align: center; margin-top: 10px;">SME Association of Malaysia</div>
+</div>
+
 <div style="display: flex; flex-direction: column; align-items: center; flex: 0 0 22%; margin-bottom: 30px;">
-<img src="data:image/jpg;base64,{LOGO25_BASE64}" style="max-height: 65px; margin-bottom: 15px;">
-<div style="font-size: 13px;">SME Association of Malaysia</div>
+<div style="height: 150px; display: flex; align-items: center; justify-content: center;">
+<img src="data:image/jpg;base64,{LOGO26_BASE64}" style="height: 150px; object-fit: contain;">
 </div>
+<div style="font-size: 13px; text-align: center; margin-top: 10px;">Malaysia Fujian Chamber of Commerce</div>
+</div>
+
 <div style="display: flex; flex-direction: column; align-items: center; flex: 0 0 22%; margin-bottom: 30px;">
-<img src="data:image/jpg;base64,{LOGO26_BASE64}" style="max-height: 65px; margin-bottom: 15px;">
-<div style="font-size: 13px;">Malaysia Fujian Chamber of Commerce</div>
+<div style="height: 150px; display: flex; align-items: center; justify-content: center;">
+<img src="data:image/jpg;base64,{LOGO27_BASE64}" style="height: 130px; object-fit: contain;">
 </div>
+<div style="font-size: 13px; text-align: center; margin-top: 10px;">Asia University Taiwan</div>
+</div>
+
 <div style="display: flex; flex-direction: column; align-items: center; flex: 0 0 22%; margin-bottom: 30px;">
-<img src="data:image/jpg;base64,{LOGO27_BASE64}" style="max-height: 65px; margin-bottom: 15px;">
-<div style="font-size: 13px;">Asia University Taiwan</div>
+<div style="height: 150px; display: flex; align-items: center; justify-content: center;">
+<img src="data:image/jpg;base64,{LOGO28_BASE64}" style="height: 130px; object-fit: contain;">
 </div>
+<div style="font-size: 13px; text-align: center; margin-top: 10px;">Malaysia Convention& Exhibition Bureau</div>
+</div>
+
 </div>
 </div>
 </div>

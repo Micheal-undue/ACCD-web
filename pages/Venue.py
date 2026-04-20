@@ -1,7 +1,7 @@
 import streamlit as st
 from components.navbar import navbar
 
-st.set_page_config(page_title="Venue & Accommodation | ACDC 2026", layout="wide")
+st.set_page_config(page_title="Venue & Accommodation | ACCD 2026", layout="wide")
 
 navbar()
 
@@ -94,6 +94,14 @@ def uniform_image(path, height="250px"):
 # ==========================================================
 st.markdown("<h3 style='text-align:center; margin-top:50px;'>Featured Hotels</h3>", unsafe_allow_html=True)
 
+st.markdown("""
+<div style='text-align: center; font-style: italic; font-size: 15px; color: #444; margin-bottom: 10px;'>
+    Shuttle bus will be provided for participants staying at these hotels to the event venue on a daily basis
+</div>
+""", unsafe_allow_html=True)
+
+
+
 # 辅助函数：专门用于居中标题和简介
 def centered_hotel_info(title, subtitle=""):
     st.markdown(f"""
@@ -104,7 +112,7 @@ def centered_hotel_info(title, subtitle=""):
     """, unsafe_allow_html=True)
 
 # =========================
-# Hotel 2
+# Hotel 1
 # =========================
 st.markdown("<h4 style='text-align:center;'>BANGI GOLF RESORT (AS OF APRIL 2026) (5-STAR RATE)</h4>", unsafe_allow_html=True)
 
@@ -123,11 +131,9 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-st.markdown("---")
-
 
 # =========================
-# Hotel 1
+# Hotel 2
 # =========================
 st.markdown("<h4 style='text-align:center; margin-top:30px;'>TENERA HOTEL & SUITES BANGI (AS OF APRIL 2026) (4-STAR RATING)</h4>", unsafe_allow_html=True)
 col1, col2 = st.columns([1, 1])
@@ -139,9 +145,6 @@ with col1:
 with col2:
     centered_hotel_info("SUPERIOR TWIN", " RM 300 PER NIGHT WITH BREAKFAST (TAX NOT INCLUDED)")
     uniform_image("assets/hotel1_double.png", height="280px")
-
-st.markdown("---")
-
 
 
 
@@ -158,6 +161,7 @@ with col3_1:
 with col3_2:
     centered_hotel_info("SUPERIOR TWIN", "RM 200 PER NIGHT WITH BREAKFAST (TAX NOT INCLUDED)")
     uniform_image("assets/hotel3_double.png", height="280px")
+
 
 st.markdown("---")
 
