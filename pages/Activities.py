@@ -40,7 +40,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ===== PAGE CONTENT =====
-st.markdown("## Key Activities")
+st.markdown("## Program structure")
 st.markdown("---")
 
 col1, col2 = st.columns(2)

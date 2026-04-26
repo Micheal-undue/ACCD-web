@@ -1,7 +1,7 @@
 import streamlit as st
 from components.navbar import navbar
 
-st.set_page_config(page_title="Venue & Accommodation | ACCD 2026", layout="wide")
+st.set_page_config(page_title="Travel | ACCD 2026", layout="wide")
 
 navbar()
 
@@ -64,7 +64,7 @@ with col_right:
 st.markdown("---")
 
 # =========================
-# 工具函数：统一图片视觉高度 
+# 统一图片视觉高度 
 # =========================
 def uniform_image(path, height="250px"):
     """
@@ -78,7 +78,7 @@ def uniform_image(path, height="250px"):
         with open(path, "rb") as f:
             data = base64.b64encode(f.read()).decode()
         
-        # 移除了 background-color 和 border-radius，使容器与网页融为一体
+    
         st.markdown(f"""
             <div style="display: flex; justify-content: center; align-items: center; 
                         height: {height}; background-color: transparent; margin: 10px 0;">
@@ -102,7 +102,7 @@ st.markdown("""
 
 
 
-# 辅助函数：专门用于居中标题和简介
+# 用于居中标题和简介
 def centered_hotel_info(title, subtitle=""):
     st.markdown(f"""
         <div style='text-align: center; margin-bottom: 10px;'>
@@ -183,53 +183,141 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
+
+# ===== PAGE CONTENT =====
 st.markdown("---")
 
+# 定义 Google 表单链接
+registration_url = "https://docs.google.com/forms/d/e/1FAIpQLSfR1yaq2BaaV_qPLEqsejHNVFym3w4dupWzhq98Y-jjPt3F8w/viewform?usp=header"
+
+# =====================================================
+# Registration Section
+# =====================================================
+
+# 注入 CSS 样式来匹配图片中的按钮设计
+st.markdown("""
+<style>
+    .registration-container {
+        text-align: center;
+        padding: 40px 0;
+    }
+    .registration-title {
+        font-size: 28px;
+        color: #333;
+        margin-bottom: 25px;
+        font-weight: 500;
+    }
+    .register-button {
+        display: inline-block;
+        padding: 15px 50px;
+        background-color: #0b1f3a; 
+        color: white !important;
+        text-decoration: none !important;
+        border-radius: 50px; /* 胶囊形状 */
+        font-size: 20px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    .register-button:hover {
+        background-color: #1a3a5f;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+    .register-button i {
+        margin-right: 10px;
+    }
+</style>
+""", unsafe_allow_html=True)
+
+# 渲染注册标题和按钮
+st.markdown(f"""
+<div class="registration-container">
+    <div class="registration-title"></div>
+    <a href="{registration_url}" target="_blank" class="register-button">
+        📋 Accommodation Form
+    </a>
+    <p style="margin-top: 20px; color: #666; font-size: 14px;">
+        Click the button above to open the Google Form in a new tab.
+    </p>
+</div>
+""", unsafe_allow_html=True)
+
+
+
+st.markdown("---")
+
+import streamlit as st
+
 # ==========================================================
-# 3️⃣ Must-Visit Destinations 
+# 3️⃣ Must-Visit Destinations (11 Destinations Layout)
 # ==========================================================
-# 假设图片存放在 assets 文件夹下
 
+st.markdown("<h3 style='text-align:center; margin-top:50px;'>Things to see & do in Malaysia</h3>", unsafe_allow_html=True)
+st.markdown("<div style='height:2px; background-color:#f0f2f6; margin:20px auto; width:80%;'></div>", unsafe_allow_html=True)
 
+# 核心渲染函数：严格匹配图片格式，所有文字居中
+def render_destination(img_path, title, description, copyright_text):
+    # 1. 顶部文字部分（标题 + 简介）
+    st.markdown(f"""
+        <div style="text-align: center; margin-bottom: 10px;">
+            <h4 style="color: #1f3b64; margin-bottom: 5px; font-size: 18px; font-weight: bold;">{title}</h4>
+            <p style="color: #333; font-size: 14px; margin-bottom: 10px; line-height: 1.3;">{description}</p>
+        </div>
+    """, unsafe_allow_html=True)
+    
+    # 2. 中间图片部分 (确保图片本身在容器内居中)
+    st.markdown('<div style="display: flex; justify-content: center;">', unsafe_allow_html=True)
+    uniform_image(img_path, height="200px")
+    st.markdown('</div>', unsafe_allow_html=True)
+    
+    # 3. 底部版权部分 (匹配图片中的蓝色链接样式)
+    st.markdown(f"""
+        <div style="text-align: center; margin-top: 8px; margin-bottom: 30px;">
+            <p style="font-size: 11px; color: #666;">
+                <span style="text-decoration:color: #666; cursor: pointer;">This Photo</span> 
+                by {copyright_text}
+            </p>
+        </div>
+    """, unsafe_allow_html=True)
 
-st.markdown("<h3 style='text-align:center; margin-top:50px;'>Must-Visit Destinations</h3>", unsafe_allow_html=True)
-st.markdown("<div class='divider'></div>", unsafe_allow_html=True) # 如果你全局样式里有divider
+# --- 第一行：4个景点 ---
+row1_cols = st.columns(4)
+destdata_row1 = [
+    ("assets/Dutch Square (Malacca).png", "Dutch Square (Malacca)", "Iconic red colonial square representing Dutch heritage.", "Unknown Author is licensed under CC BY-NC-ND"),
+    ("assets/St. Paul's Hill (Malacca).png", "St. Paul's Hill (Malacca)", "Historic hilltop ruins with panoramic views..", "Unknown Author is licensed under CC BY-SA-NC"),
+    ("assets/A Famosa (Malacca).png", "A Famosa (Malacca)", "Portuguese fortress remains symbolizing colonial history.", "Unknown Author is licensed under CC BY-NC-ND"),
+    ("assets/Jonker Street (Malacca).png", "Jonker Street (Malacca)", "Vibrant cultural street with markets and heritage shops.","Unknown Author")
+]
 
-# 第一行：4个景点
-col1, col2, col3, col4 = st.columns(4)
+for i, col in enumerate(row1_cols):
+    with col:
+        render_destination(*destdata_row1[i])
 
-with col1:
-    uniform_image("assets/dest_klcc.jpg", height="180px")
-    st.markdown("<p style='text-align:center; font-weight:500;'>KL Convention Centre</p>", unsafe_allow_html=True)
+# --- 第二行：4个景点 ---
+row2_cols = st.columns(4)
+destdata_row2 = [
+    ("assets/Petronas Twin Towers (Kuala Lumpur).png", "Petronas Twin Towers (Kuala Lumpur)", "World-famous twin towers symbolizing Malaysia’s progress.", "Unknown Author is licensed under CC BY"),
+    ("assets/KL Tower (Kuala Lumpur).png", "KL Tower (Kuala Lumpur)", "Observation tower offering panoramic city views.", " Unknown Author is licensed under CC BY-NC"),
+    ("assets/Central Market (Kuala Lumpur).png", "Central Market (Kuala Lumpur)", "A historic cultural hub where visitors can experience Malaysia’s diverse arts, crafts, and heritage in one vibrant, easily accessible location.", "Unknown Author is licensed under CC BY-NC-ND"),
+    ("assets/Bukit Bintang (Kuala Lumpur).png", "Bukit Bintang (Kuala Lumpur)", "Lively shopping and entertainment district.", " Unknown Author is licensed under CC BY-NC-ND")
+]
 
-with col2:
-    uniform_image("assets/dest_aquaria.jpg", height="180px")
-    st.markdown("<p style='text-align:center; font-weight:500;'>Aquaria, KLCC</p>", unsafe_allow_html=True)
+for i, col in enumerate(row2_cols):
+    with col:
+        render_destination(*destdata_row2[i])
 
-with col3:
-    uniform_image("assets/dest_twin_towers.jpg", height="180px")
-    st.markdown("<p style='text-align:center; font-weight:500;'>Petronas Twin Towers</p>", unsafe_allow_html=True)
+# --- 第三行：最后3个景点 (居中排列) ---
+_, c1, c2, c3, _ = st.columns([0.1, 1, 1, 1, 0.1])
+destdata_row3 = [
+    ("assets/Batu Caves (Selangor).png", "Batu Caves (Selangor)", "Majestic limestone cave temple with colorful steps.", " Unknown Author is licensed under CC BY"),
+    ("assets/Putra Mosque (Putrajaya).png", "Putra Mosque (Putrajaya)", "Beautiful pink mosque by the lake.", "Unknown Author is licensed under CC BY-NC"),
+    ("assets/Putra Perdana (Putrajaya).png", "Putra Perdana (Putrajaya)", "Prime Minister’s office with grand architecture.", "Unknown Author is licensed under CC BY-SA-NC")
+]
 
-with col4:
-    uniform_image("assets/dest_putrajaya.jpg", height="180px")
-    st.markdown("<p style='text-align:center; font-weight:500;'>Putrajaya Lake</p>", unsafe_allow_html=True)
-
-# 第二行：3个景点 (居中排列)
-# 我们使用 5 个列，中间 3 个放内容，左右留空实现居中感
-_, b1, b2, b3, _ = st.columns([0.5, 1, 1, 1, 0.5])
-
-with b1:
-    uniform_image("assets/dest_batu_caves.jpg", height="180px")
-    st.markdown("<p style='text-align:center; font-weight:500;'>Batu Caves</p>", unsafe_allow_html=True)
-
-with b2:
-    uniform_image("assets/dest_central_market.jpg", height="180px")
-    st.markdown("<p style='text-align:center; font-weight:500;'>Central Market, KL</p>", unsafe_allow_html=True)
-
-with b3:
-    uniform_image("assets/dest_genting.jpg", height="180px")
-    st.markdown("<p style='text-align:center; font-weight:500;'>Genting Highlands</p>", unsafe_allow_html=True)
-
+with c1: render_destination(*destdata_row3[0])
+with c2: render_destination(*destdata_row3[1])
+with c3: render_destination(*destdata_row3[2])
 
 
 st.markdown("---")

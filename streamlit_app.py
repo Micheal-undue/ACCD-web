@@ -97,10 +97,12 @@ LOGO25 = "assets/SME.jpg"
 LOGO26 = "assets/MFC.jpg"
 LOGO27 = "assets/AUT.jpg"
 LOGO28 = "assets/MCEB.png"
+LOGO29 = "assets/SEARCH.jpg"
 
 
 SPEAKER1_PATH = "assets/speaker1.jpg" 
 SPEAKER2_PATH = "assets/speaker2.jpg"
+SPEAKER3_PATH = "assets/speaker3.jpg"
 
 
 BG_BASE64 = get_base64_image(BG_PATH)
@@ -125,6 +127,7 @@ LOGO25_BASE64 = get_base64_image(LOGO25)
 LOGO26_BASE64 = get_base64_image(LOGO26)
 LOGO27_BASE64 = get_base64_image(LOGO27)
 LOGO28_BASE64 = get_base64_image(LOGO28)
+LOGO29_BASE64 = get_base64_image(LOGO29)
 
 DEST_1_B64 = get_base64_image("assets/dest_klcc.jpg")
 DEST_2_B64 = get_base64_image("assets/dest_aquaria.jpg")
@@ -137,7 +140,7 @@ DEST_7_B64 = get_base64_image("assets/dest_genting.jpg")
 
 SPEAKER1_B64 = get_base64_image(SPEAKER1_PATH)
 SPEAKER2_B64 = get_base64_image(SPEAKER2_PATH)
-
+SPEAKER3_B64 = get_base64_image(SPEAKER3_PATH)
 
 # =============================
 # Global CSS
@@ -404,7 +407,7 @@ st.markdown("""
         ASEAN-CHINA<br/>
         Regional Cooperation & Development Forum<br/>
         2026 (ACCD'26)</h1>
-    <h2>Cross-border Synergy for a Better Future<br/>跨境合作 · 共创未来</h2>
+    <h2>Cross-border Synergy for a Better Future<br/></h2>
     <div class="divider"></div>
     <p>
         A high-level regional forum integrating academia, industry and policy dialogue<br/>
@@ -436,9 +439,6 @@ st.markdown(f"""
         <div class="logo-box">
             <img src="data:image/png;base64,{LOGO21_BASE64}" alt="logo21">
         </div>
-        <div class="logo-box">
-            <img src="data:image/png;base64,{LOGO6_BASE64}" alt="logo6">
-        </div>
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -451,13 +451,14 @@ st.markdown("""
     <div class="section-title">Overview of ACCD'26</div>
     <div class="divider"></div>
     <div class="section-text">
-        ACCD'26 is a five-day ASEAN-China platform that strengthens China-Malaysia Educational,Trade, 
-            Cultural, Tourism and Regional Cooperation. The programme includes forums, researchpresentations,
-             exhibitions, business matching, Malaysia and China trade policies, industry andcultural visits; 
-            bringing together government, universities, and industry to promote academicexchange, business partners,
-             regional development, and long-term collaboration.
+The ASEAN–China Regional Cooperation & Development Forum 2026 (ACCD’26) is a premier international platform that brings together visionary leaders, academics, policymakers, and industry pioneers from across ASEAN and China to shape the future of regional collaboration.  
+      <br/><br/>
+Centered on the theme “Cross-Border Synergy for a Better Future,” ACCD’26 goes beyond a traditional conference—offering a dynamic blend of high-impact forums, cutting-edge research exchanges, business matchmaking, exhibitions, and immersive industry visits.
+
+Designed to spark meaningful connections and real-world outcomes, the forum empowers participants to unlock new trade and investment opportunities, drive innovation in the digital and green economy, and build lasting academic and industry partnerships.
+
+By bridging ideas, people, and markets, ACCD’26 positions itself as a gateway to ASEAN–China cooperation, fostering sustainable growth, cultural understanding, and transformative collaborations for the future.
         <br/><br/>
-        This is an annual event.This year it is held in Malaysia at UKM;Next year it rotates to be hosted in China
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -473,39 +474,42 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# 1. 定义数据列表 (方便后续增加人数)
+# 1. 定义数据列表 (保持不变，确保 anchor 字段存在)
 speakers = [
     {
+        "name": "Prof. Ts. Dr. Mohd Helmi Ali",
+        "image": SPEAKER3_B64,
+        "anchor": "helmi-ali"
+    },
+    {
         "name": "Prof. Ming-Lang Tseng",
-        "image": SPEAKER1_B64
+        "image": SPEAKER1_B64,
+        "anchor": "ming-lang"
     },
     {
         "name": "Professor Dr. Ming Lim",
-        "image": SPEAKER2_B64
+        "image": SPEAKER2_B64,
+        "anchor": "ming-lim"
     }
 ]
 
 # 2. 创建容器列
-# 如果只有 2 个人，我们用 [1, 1] 比例，并外层套一个居中的 col 以美化布局
-empty_l, col1, col2, empty_r = st.columns([1, 2, 2, 1])
+empty_l, col1, col2, col3, empty_r = st.columns([1, 2, 2, 2, 1])
+cols = [col1, col2, col3]
 
-with col1:
-    st.markdown(f"""
-    <div class="speaker-card">
-        <img src="data:image/jpg;base64,{speakers[0]['image']}" style="width:200px; height:200px; border-radius:50%; object-fit:cover; border:3px solid #f0f2f6;">
-        <a href="/Committee" target="_self" class="details-link">📇</a>
-        <div class="speaker-name">{speakers[0]['name']}</div>
-    </div>
-    """, unsafe_allow_html=True)
-
-with col2:
-    st.markdown(f"""
-    <div class="speaker-card">
-        <img src="data:image/jpg;base64,{speakers[1]['image']}" style="width:200px; height:200px; border-radius:50%; object-fit:cover; border:3px solid #f0f2f6;">
-        <a href="/Committee" target="_self" class="details-link">📇</a>
-        <div class="speaker-name">{speakers[1]['name']}</div>
-    </div>
-    """, unsafe_allow_html=True)
+# 3. 循环渲染
+for i, col in enumerate(cols):
+    with col:
+        # 【关键修改】 href 中同时加入 query 参数 (?) 和锚点 (#)
+        target_link = f"/Committee?speaker={speakers[i]['anchor']}#{speakers[i]['anchor']}"
+        
+        st.markdown(f"""
+        <div class="speaker-card">
+            <img src="data:image/jpg;base64,{speakers[i]['image']}" style="width:200px; height:200px; border-radius:50%; object-fit:cover; border:3px solid #f0f2f6;">
+            <a href="{target_link}" target="_self" class="details-link">📇</a>
+            <div class="speaker-name">{speakers[i]['name']}</div>
+        </div>
+        """, unsafe_allow_html=True)
 
 
 # =============================
@@ -728,6 +732,13 @@ html_content = f"""
 <div style="font-size: 13px; text-align: center; margin-top: 10px;">Malaysia Convention& Exhibition Bureau</div>
 </div>
 
+<div style="display: flex; flex-direction: column; align-items: center; flex: 0 0 22%; margin-bottom: 30px;">
+<div style="height: 150px; display: flex; align-items: center; justify-content: center;">
+<img src="data:image/jpg;base64,{LOGO29_BASE64}" style="height: 130px; object-fit: contain;">
+</div>
+<div style="font-size: 13px; text-align: center; margin-top: 10px;">Southeast Asia Research Centre for Humanities</div>
+</div>
+
 </div>
 </div>
 </div>
@@ -737,44 +748,6 @@ html_content = f"""
 st.markdown(html_content, unsafe_allow_html=True)
 
 
-
-# =============================
-# Cooperation with MATRADE Section
-# =============================
-st.markdown("""
-<div class="section center">
-    <div class="section-title">Cooperation with MATRADE</div>
-    <div class="divider"></div>
-    <div class="section-text-left">
-        <ol>
-            <li>Provide speakers and educational materials to introduce Malaysia export policies and promotion, international trading between ASEAN and China;</li>
-            <li>Connect and invite other ASEAN Trade officers to participate;</li>
-            <li>Visit MATRADE office and exchange;</li>
-            <li>Advertise and promote ACDC'26 program;</li>
-            <li>Use MATRADE logo as co-partner;</li>
-            <li>Sponsorship for the event in terms of monetary support, provide 2 buses and lunch when visiting MATRADE.</li>
-        </ol>
-    </div>
-</div>
-""", unsafe_allow_html=True)
-
-# =============================
-# Potential Sponsorship Section
-# =============================
-st.markdown("""
-<div class="section center">
-    <div class="section-title">Potential Sponsorship</div>
-    <div class="divider"></div>
-    <div class="section-text">
-        Malaysia External Trade Development Corporation (MATRADE)<br/><br/>
-        MyCEB<br/><br/>
-        SME Corporation Malaysia and their members<br/><br/>
-        Technology Park Malaysia Corporation Sdn Bhd<br/><br/>
-        Malaysia Digital Economy Corporation (MDEC)<br/><br/>
-        Chamber of Commerce in Malaysia
-    </div>
-</div>
-""", unsafe_allow_html=True)
 
 # =============================
 # Footer  

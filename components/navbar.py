@@ -31,10 +31,10 @@ def navbar():
 
     <div class="navbar">
         <a href="/" target="_self">Home</a>
-        <a href="/Track" target="_self">Track</a>
+        <a href="/Track" target="_self">Themes</a>
         <a href="/Activities" target="_self">Activities</a>
         <a href="/Registration" target="_self">Registration</a>
-        <a href="/Venue" target="_self">Venue</a>
+        <a href="/Venue" target="_self">Travel</a>
         <a href="/Committee" target="_self">Committee</a>
         <a href="/Contact" target="_self">Contact Us</a>
     </div>
