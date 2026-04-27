@@ -126,7 +126,7 @@ Harbin University of Commerce attaches great importance to practical teaching an
         render_org_row(
             "matrade", 
             "Malaysia External Trade Development Corporation (MATRADE)", 
-            "METDC.png",
+            "METDC.jpg",
             """
             3.2MATRADE is Malaysia’s government agency responsible for promoting international trade. It supports Malaysian enterprises with:
 1.Market information  
@@ -237,7 +237,7 @@ With a network of 300+ international experts, WRTO supports research travel stan
         # 3.11 SEARCH
         render_org_row(
             "search", 
-            "3.11 Southeast Asia Research Centre for Humanities (SEARCH)", 
+            "Southeast Asia Research Centre for Humanities (SEARCH)", 
             "SEARCH.jpg",
             """
             SEARCH is an independent, forward-looking strategic intelligence platform dedicated to strengthening collaboration between government, industry, and academia. We operate with the core belief that sustainable regional growth can only be achieved through inclusive multilateral engagement and evidence-based strategic partnerships.
@@ -272,28 +272,42 @@ Former Minister of Tourism and Culture
 </tr>
 
 <tr>
-<td style="padding:10px; border:1px solid #ddd;">Co-Chairman</td>
-<td style="border:1px solid #ddd;">Prof. Ts. Dr. Mohd Helmi Ali</td>
+<td style="padding:10px; border:1px solid #ddd;">Chairman</td>
+<td style="border:1px solid #ddd;">Prof. Ir. Dr Riza Sulaiman</td>
 <td style="border:1px solid #ddd;">
-Deputy Dean (Research & Innovation)<br>
-Graduate School of Business (GSB)<br>
-Universiti Kebangsaan Malaysia
+Director of the Institute of Visual Informatics, UKM
 </td>
 </tr>
 
 <tr>
 <td style="padding:10px; border:1px solid #ddd;">Co-Chairman</td>
-<td style="border:1px solid #ddd;">Dato Low Kok Thai</td>
+<td style="border:1px solid #ddd;">Prof Ts. Dr. Helmi Ali</td>
 <td style="border:1px solid #ddd;">
-Chairman of PPTMC
+Professor at the Graduate School of Business, UKM
 </td>
 </tr>
 
 <tr>
 <td style="padding:10px; border:1px solid #ddd;">Co-Chairman</td>
-<td style="border:1px solid #ddd;">(Pending Confirmation)</td>
+<td style="border:1px solid #ddd;">Professor of Harbin Normal University</td>
 <td style="border:1px solid #ddd;">
-Professor from Harbin University of Commerce
+Professor of Harbin Normal University
+</td>
+</tr>
+            
+<tr>
+<td style="padding:10px; border:1px solid #ddd;">Co-Chairman</td>
+<td style="border:1px solid #ddd;">Dato’ Low Kok Thai</td>
+<td style="border:1px solid #ddd;">
+President of Malaysia–China Higher Education Exchange Association (PPTMC)
+</td>
+</tr>
+
+<tr>
+<td style="padding:10px; border:1px solid #ddd;">Co-Chairman</td>
+<td style="border:1px solid #ddd;"> Mr. Ian Neo Chee Hua</td>
+<td style="border:1px solid #ddd;">
+Chief Executive Officer of Southeast Asia Research Centre for Humanities (SEARCH)
 </td>
 </tr>
 
@@ -369,23 +383,37 @@ with st.container():
                 st.markdown("---")
                 
                 st.markdown("""
-                Mohd Helmi Ali is an Professor at the **UKM-Graduate School of Business, Universiti Kebangsaan Malaysia**. He possesses extensive experience across multiple industries, including food, oil and gas, maritime, transportation, and construction. 
-
-                Despite his recent involvement in academics, he has led various research fields, with a particular focus on **food integrity, the halal-hub, and supply chain management**. 
-
-                **Research Interests:**
-                - Food Integrity & Halal Food Supply Chain
-                - Sustainable Development
-                - Operations Management & Innovation
-                
-                He is also a **Chartered Member** of The Chartered Institute of Logistics & Transport (CILT) Malaysia, bridging the gap between academic research and industrial application.
+                Mohd Helmi Ali is an Professor at the UKM-Graduate School of Business, Universiti Kebangsaan Malaysia. He has experiences in multiple industries such as food, oil and gas, maritime, transportation, and construction. Despite of his recent involvement in academics, he has worked with many research fields, in particular on food integrity and supply chain, halal-hub. His research interest focus on food integrity, halal food supply chain, sustainable development, operation management and innovation. He also is a chartered member The Chartered Institute of Logistics & Transport Malaysia.
                 """)
 
 
-        # ========== 第 2 位成员 ==========
-        st.markdown('<div id="pending-prof"></div>', unsafe_allow_html=True)
-        with st.expander("2. Distinguished Professor from Harbin University of Commerce", expanded=False):
-            st.info("Pending Confirmation.")
+        # ========== 第 2 位成员：Professor Ir. Dr. Riza Sulaiman ==========
+        st.markdown(f'<div id="riza-sulaiman"></div>', unsafe_allow_html=True)
+        # 假设 target_speaker 逻辑一致，此处设为 riza-sulaiman
+        with st.expander("2. Prof. Ir. Dr. Riza Sulaiman, Universiti Kebangsaan Malaysia", expanded=(target_speaker == "riza-sulaiman")):
+            col_side2, col_main2 = st.columns([1, 2.5])
+               
+            with col_side2:
+                # 此处图片路径请根据实际情况微调（例如 speaker1.jpg 或相应资源）
+                st.image("assets/speaker4.jpg", use_container_width=True)
+                st.markdown("""
+                <div style="background-color: #f8f9fa; padding: 15px; border-radius: 10px; border-left: 4px solid #0b1f3a;">
+                    <p style="margin-bottom: 5px;"><strong>Expertise:</strong> Visual Informatics</p>
+                    <p style="margin-bottom: 5px;"><strong>Domain:</strong> AI & Digital Tech</p>
+                </div>
+                 """, unsafe_allow_html=True)
+                st.caption("Professional Engineer (Ir.)")
+
+            with col_main2:
+                st.markdown("### PROF. Ir. DR. RIZA SULAIMAN")
+                st.markdown("##### *Director, Institute of Visual Informatics (IVI),Universiti Kebangsaan Malaysia (UKM)*")
+                st.markdown("---")
+                
+                st.markdown("""
+                Professor Ir. Dr. Riza Sulaiman is the Director of IVI UKM and a Professional Engineer with expertise in visual informatics, artificial intelligence, and digital technologies. He has led impactful research, industry collaborations, and innovation initiatives. 
+                
+                As Chair of ACCD’26, he brings strong leadership in advancing ASEAN–China cooperation and promoting technology-driven regional development.
+                """)
 
 
         # ========== 第 3 位成员 ==========
@@ -406,11 +434,16 @@ with st.container():
             with col_main3:
                 st.markdown("### Prof. Ming-Lang Tseng")
                 st.markdown("##### *Chair Professor & Director, Institute of Innovation and Circular Economy*")
+                st.markdown("Asia University, Taiwan")
                 st.markdown("---")
                 st.markdown("""
                 Prof. Ming-Lang Tseng is an internationally acclaimed scholar and thought leader in sustainable supply chain management, circular economy, digital transformation, and innovation-driven industrial development. He currently serves as Chair Professor and Director of the Institute of Innovation and Circular Economy at Asia University, Taiwan, and has held distinguished academic appointments across Malaysia, China, the Philippines, and the United Kingdom. 
                 
-                With over **500 international publications** and more than **32,000 citations**, Prof. Tseng is widely recognized for his pioneering work in green supply chains...
+                With over 500 international publications and more than 32,000 citations, Prof. Tseng is widely recognized for his pioneering work in green supply chains, Industry 4.0, AI-enabled decision systems, sustainable production, and circular business strategies. His research continues to shape policy, industrial innovation, and cross-border sustainability initiatives across Asia and beyond. 
+
+                A globally respected academic leader, he has been consistently recognized among Stanford University’s Top 2% Scientists Worldwide and is ranked among Taiwan’s leading researchers in business management and engineering. He also serves as Editor-in-Chief of the Journal of Industrial and Production Engineering and holds editorial leadership roles in several top-tier international journals. 
+
+                At ACCD’26, Prof. Tseng will bring strategic insights into how ASEAN–China collaboration can accelerate sustainable regional development through circular economy practices, smart industries, digital supply chains, and academia–industry partnerships, directly supporting the Forum’s mission of strengthening innovation ecosystems and regional cooperation.
                 """)
 
 
@@ -422,19 +455,31 @@ with st.container():
                 st.image("assets/speaker2.jpg", use_container_width=True)
                 st.markdown("""
                 <div style="background-color: #f8f9fa; padding: 15px; border-radius: 10px; border-left: 4px solid #0b1f3a;">
-                    <p><strong>Location:</strong> United Kingdom</p>
+                    <p style="margin-bottom: 5px;"><strong>Location:</strong> United Kingdom</p>
+                    <p style="margin-bottom: 5px;"><strong>Citations:</strong> 24,000+</p>
+                    <p style="margin-bottom: 5px;"><strong>Publications:</strong> 400+</p>
                 </div>
                 """, unsafe_allow_html=True)
             
             with col_main4:
-                st.markdown("### Prof. Ming K. Lim")
-                st.markdown("""##### *Professor of Supply Chain Management and Digitalisation*  
-*Adam Smith Business School, University of Glasgow, United Kingdom*""")
+                st.markdown("### Prof. Dr. Ming Lim")
+                st.markdown("##### *Professor of Supply Chain Management and Digitalisation*")
+                st.markdown("Adam Smith Business School, University of Glasgow, United Kingdom")
                 st.markdown("---")
-                st.write("""Professor Dr. Ming Lim is an internationally distinguished scholar in supply chain management, digitalisation, Industry 4.0, and sustainable logistics systems. He currently serves as Professor of Supply Chain Management and Digitalisation at the Adam Smith Business School, University of Glasgow, and is also a Visiting Professor at the UKM Graduate School of Business, strengthening academic collaboration across the ASEAN region. 
-With more than 400 scholarly publications and nearly 24,000 citations, Prof. Lim is globally recognized for his pioneering work in smart logistics, Internet of Things (IoT), blockchain, AI-driven supply chain analytics, low-carbon logistics, and circular supply chain management. His interdisciplinary research integrates engineering, computer science, information systems, and operations management to address real-world industrial and sustainability challenges. 
-A respected academic leader and industry collaborator, Prof. Lim has led major international research and consultancy projects involving DHL, Rolls-Royce, Toyota, Unilever, NHS, Caterpillar, and multiple SMEs, driving innovation in resilient and technology-enabled supply chains. He also serves as Editor-in-Chief of the International Journal of Logistics Research and Applications, further contributing to the advancement of global knowledge in logistics and supply chain resilience. 
-At ACCD’26, Prof. Lim will share strategic perspectives on how ASEAN–China cooperation can accelerate regional competitiveness through digital supply chains, green logistics, Industry 4.0 ecosystems, and academia–industry innovation partnerships, directly supporting the Forum’s vision for sustainable regional growth and economic transformation. """)
+        
+                # 使用三引号包裹多段落内容，确保换行显示正常
+                st.markdown(f"""
+                Professor Dr. Ming Lim is an internationally distinguished scholar in supply chain management, digitalisation, Industry 4.0, and sustainable logistics systems. He currently serves as Professor of Supply Chain Management and Digitalisation at the Adam Smith Business School, University of Glasgow, and is also a Visiting Professor at the UKM Graduate School of Business, strengthening academic collaboration across the ASEAN region. 
+
+                With more than 400 scholarly publications and nearly 24,000 citations, Prof. Lim is globally recognized for his pioneering work in smart logistics, Internet of Things (IoT), blockchain, AI-driven supply chain analytics, low-carbon logistics, and circular supply chain management. His interdisciplinary research integrates engineering, computer science, information systems, and operations management to address real-world industrial and sustainability challenges. 
+
+                A respected academic leader and industry collaborator, Prof. Lim has led major international research and consultancy projects involving DHL, Rolls-Royce, Toyota, Unilever, NHS, Caterpillar, and multiple SMEs, driving innovation in resilient and technology-enabled supply chains. He also serves as Editor-in-Chief of the International Journal of Logistics Research and Applications, further contributing to the advancement of global knowledge in logistics and supply chain resilience. 
+
+                At **ACCD’26**, Prof. Lim will share strategic perspectives on how ASEAN–China cooperation can accelerate regional competitiveness through digital supply chains, green logistics, Industry 4.0 ecosystems, and academia–industry innovation partnerships, directly supporting the Forum’s vision for sustainable regional growth and economic transformation.
+                """)
+
+
+
 
 # ==========================================================
 # 核心功能：增强版自动定位脚本 (放在页面底部或逻辑后方)
@@ -492,13 +537,13 @@ st.markdown("""
 <tr>
 <td style="padding:10px; border:1px solid #ddd;">Co-Chairman</td>
 <td style="border:1px solid #ddd; padding:10px;">Prof. Ts. Dr Mohd Helmi Ali</td>
-<td style="border:1px solid #ddd; padding:10px;">UKM GSB, former Deputy Dean</td>
+<td style="border:1px solid #ddd; padding:10px;">Professor of UKM GSB</td>
 </tr>
 
 <tr>
 <td style="padding:10px; border:1px solid #ddd;">Co-Chairman</td>
-<td style="border:1px solid #ddd; padding:10px;">Representative of Harbin University of Commerce</td>
-<td style="border:1px solid #ddd; padding:10px;">Representative of Harbin University of Commerce</td>
+<td style="border:1px solid #ddd; padding:10px;">Rep. of Harbin Normal University</td>
+<td style="border:1px solid #ddd; padding:10px;">Rep. HNU</td>
 </tr>
 
 <tr>
@@ -509,8 +554,8 @@ st.markdown("""
 
 <tr>
 <td style="padding:10px; border:1px solid #ddd;">Vice-Chairman 1</td>
-<td style="border:1px solid #ddd; padding:10px;">Representative of Harbin University of Commerce</td>
-<td style="border:1px solid #ddd; padding:10px;">Representative of Harbin University of Commerce</td>
+<td style="border:1px solid #ddd; padding:10px;">Rep. of Harbin University of Commerce</td>
+<td style="border:1px solid #ddd; padding:10px;">Rep. HUC</td>
 </tr>
 
 <tr>
@@ -520,31 +565,19 @@ st.markdown("""
 </tr>
 
 <tr>
-<td style="padding:10px; border:1px solid #ddd;">Event Coordinator</td>
+<td style="padding:10px; border:1px solid #ddd;">Secretary 1</td>
 <td style="border:1px solid #ddd; padding:10px;">Ms. Najiha</td>
 <td style="border:1px solid #ddd; padding:10px;">Secretary of PPTMC</td>
 </tr>
 
 <tr>
-<td style="padding:10px; border:1px solid #ddd;">Website Designer</td>
-<td style="border:1px solid #ddd; padding:10px;">Mr. Liuzongyi</td>
-<td style="border:1px solid #ddd; padding:10px;">Secretary of PPTMC</td>
-</tr>
-            
-<tr>
-<td style="padding:10px; border:1px solid #ddd;">Secretary 1</td>
-<td style="border:1px solid #ddd; padding:10px;">Representative of UKM IVI</td>
-<td style="border:1px solid #ddd; padding:10px;">Representative of UKM IVI</td>
-</tr>
-
-<tr>
 <td style="padding:10px; border:1px solid #ddd;">Secretary 2</td>
-<td style="border:1px solid #ddd; padding:10px;">Representative of Harbin University of Commerce</td>
-<td style="border:1px solid #ddd; padding:10px;">Representative of Harbin University of Commerce</td>
+<td style="border:1px solid #ddd; padding:10px;">Representative of HNU</td>
+<td style="border:1px solid #ddd; padding:10px;">Representative of HNU</td>
 </tr>
 
 <tr>
-<td style="padding:10px; border:1px solid #ddd;">Finance 1</td>
+<td style="padding:10px; border:1px solid #ddd;">Treasurer</td>
 <td style="border:1px solid #ddd; padding:10px;">Datin Kuong Ivy</td>
 <td style="border:1px solid #ddd; padding:10px;">Treasurer of PPTMC</td>
 </tr>
@@ -552,15 +585,18 @@ st.markdown("""
 <tr>
 <td style="padding:10px; border:1px solid #ddd;">Group Leaders and Committee Members</td>
 <td colspan="2" style="border:1px solid #ddd; padding:10px;">
-• Ms. Chen Chu Chu (Vice Chairman of PPTMC)<br>
-• Ms. Melissa Ma Zhou Qun (Vice Chairman of PPTMC)<br>
-• Dr. Diana Liang Xin Rui (Secretary of PPTMC)<br>
-• Ivy Teh (Committee of PPTMC)<br>
-• Representative of UKM IVI<br>
-• Representative of UPM<br>
-• Representative of PPTMC<br>
-• Representative of HUC<br>
-• Representative of HNU
+Ms. Chen Chu Chu (Vice Chairman of PPTMC) </br>
+Ms. Melissa Ma Zhou Qun (Vice Chairman of PPTMC) </br>
+Dr. Diana Liang Xin Rui (Secretary of PPTMC) </br>
+Dr. Zoul Liu Zong Yi (Secretary of PPTMC) </br>
+Ivvy Teh (Committee of PPTMC) </br>
+Representative of UKM IVI</br>
+Representative of UPM</br>
+Representative of PPTMC</br>
+Representative of HNU</br>
+Representative of HNU</br>
+Representative of HUC</br>
+Representative of UPM
 </td>
 </tr>
 

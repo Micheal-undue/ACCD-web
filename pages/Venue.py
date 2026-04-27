@@ -114,7 +114,7 @@ def centered_hotel_info(title, subtitle=""):
 # =========================
 # Hotel 1
 # =========================
-st.markdown("<h4 style='text-align:center;'>BANGI GOLF RESORT (AS OF APRIL 2026) (5-STAR RATE)</h4>", unsafe_allow_html=True)
+st.markdown("<h4 style='text-align:center;'>BANGI GOLF RESORT (AS OF APRIL 2026) (5-STAR RATING)</h4>", unsafe_allow_html=True)
 
 # 如果酒店2只是展示环境，没有具体房型标题，可以直接放图片
 img1, img2, img3 = st.columns(3)
