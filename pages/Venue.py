@@ -39,7 +39,7 @@ with col_left:
     <div style='text-align:center; margin-top:15px; font-size:14px;'>
 
     <strong>ESTIMATED PARTICIPANTS</strong><br>
-    300 persons (180 from ASEAN; 120 from China)<br><br>
+    1000 people (300 international delegates)<br><br>
 
     <strong>EXHIBITION BOOTHS</strong><br>
     40 booths (20 from ASEAN; 20 from China)
@@ -257,7 +257,7 @@ st.markdown("<h3 style='text-align:center; margin-top:50px;'>Things to see & do 
 st.markdown("<div style='height:2px; background-color:#f0f2f6; margin:20px auto; width:80%;'></div>", unsafe_allow_html=True)
 
 # 核心渲染函数：严格匹配图片格式，所有文字居中
-def render_destination(img_path, title, description, copyright_text):
+def render_destination(img_path, title, description):
     # 1. 顶部文字部分（标题 + 简介）
     st.markdown(f"""
         <div style="text-align: center; margin-bottom: 10px;">
@@ -271,23 +271,15 @@ def render_destination(img_path, title, description, copyright_text):
     uniform_image(img_path, height="200px")
     st.markdown('</div>', unsafe_allow_html=True)
     
-    # 3. 底部版权部分 (匹配图片中的蓝色链接样式)
-    st.markdown(f"""
-        <div style="text-align: center; margin-top: 8px; margin-bottom: 30px;">
-            <p style="font-size: 11px; color: #666;">
-                <span style="text-decoration:color: #666; cursor: pointer;">This Photo</span> 
-                by {copyright_text}
-            </p>
-        </div>
-    """, unsafe_allow_html=True)
+
 
 # --- 第一行：4个景点 ---
 row1_cols = st.columns(4)
 destdata_row1 = [
-    ("assets/Dutch Square (Malacca).png", "Dutch Square (Malacca)", "Iconic red colonial square representing Dutch heritage.", "Unknown Author is licensed under CC BY-NC-ND"),
-    ("assets/St. Paul's Hill (Malacca).png", "St. Paul's Hill (Malacca)", "Historic hilltop ruins with panoramic views..", "Unknown Author is licensed under CC BY-SA-NC"),
-    ("assets/A Famosa (Malacca).png", "A Famosa (Malacca)", "Portuguese fortress remains symbolizing colonial history.", "Unknown Author is licensed under CC BY-NC-ND"),
-    ("assets/Jonker Street (Malacca).png", "Jonker Street (Malacca)", "Vibrant cultural street with markets and heritage shops.","Unknown Author")
+    ("assets/Dutch Square (Malacca).png", "Dutch Square (Malacca)", "Iconic red colonial square representing Dutch heritage."),
+    ("assets/St. Paul's Hill (Malacca).png", "St. Paul's Hill (Malacca)", "Historic hilltop ruins with panoramic views.."),
+    ("assets/A Famosa (Malacca).png", "A Famosa (Malacca)", "Portuguese fortress remains symbolizing colonial history."),
+    ("assets/Jonker Street (Malacca).png", "Jonker Street (Malacca)", "Vibrant cultural street with markets and heritage shops.")
 ]
 
 for i, col in enumerate(row1_cols):
@@ -297,10 +289,10 @@ for i, col in enumerate(row1_cols):
 # --- 第二行：4个景点 ---
 row2_cols = st.columns(4)
 destdata_row2 = [
-    ("assets/Petronas Twin Towers (Kuala Lumpur).png", "Petronas Twin Towers (Kuala Lumpur)", "World-famous twin towers symbolizing Malaysia’s progress.", "Unknown Author is licensed under CC BY"),
-    ("assets/KL Tower (Kuala Lumpur).png", "KL Tower (Kuala Lumpur)", "Observation tower offering panoramic city views.", " Unknown Author is licensed under CC BY-NC"),
-    ("assets/Central Market (Kuala Lumpur).png", "Central Market (Kuala Lumpur)", "A historic cultural hub where visitors can experience Malaysia’s diverse arts, crafts, and heritage in one vibrant, easily accessible location.", "Unknown Author is licensed under CC BY-NC-ND"),
-    ("assets/Bukit Bintang (Kuala Lumpur).png", "Bukit Bintang (Kuala Lumpur)", "Lively shopping and entertainment district.", " Unknown Author is licensed under CC BY-NC-ND")
+    ("assets/Petronas Twin Towers (Kuala Lumpur).png", "Petronas Twin Towers (Kuala Lumpur)", "World-famous twin towers symbolizing Malaysia’s progress."),
+    ("assets/KL Tower (Kuala Lumpur).png", "KL Tower (Kuala Lumpur)", "Observation tower offering panoramic city views."),
+    ("assets/Central Market (Kuala Lumpur).png", "Central Market (Kuala Lumpur)", "A historic cultural hub where visitors can experience Malaysia’s diverse arts, crafts, and heritage in one vibrant, easily accessible location."),
+    ("assets/Bukit Bintang (Kuala Lumpur).png", "Bukit Bintang (Kuala Lumpur)", "Lively shopping and entertainment district.")
 ]
 
 for i, col in enumerate(row2_cols):
@@ -310,9 +302,9 @@ for i, col in enumerate(row2_cols):
 # --- 第三行：最后3个景点 (居中排列) ---
 _, c1, c2, c3, _ = st.columns([0.1, 1, 1, 1, 0.1])
 destdata_row3 = [
-    ("assets/Batu Caves (Selangor).png", "Batu Caves (Selangor)", "Majestic limestone cave temple with colorful steps.", " Unknown Author is licensed under CC BY"),
-    ("assets/Putra Mosque (Putrajaya).png", "Putra Mosque (Putrajaya)", "Beautiful pink mosque by the lake.", "Unknown Author is licensed under CC BY-NC"),
-    ("assets/Putra Perdana (Putrajaya).png", "Putra Perdana (Putrajaya)", "Prime Minister’s office with grand architecture.", "Unknown Author is licensed under CC BY-SA-NC")
+    ("assets/Batu Caves (Selangor).png", "Batu Caves (Selangor)", "Majestic limestone cave temple with colorful steps."),
+    ("assets/Putra Mosque (Putrajaya).png", "Putra Mosque (Putrajaya)", "Beautiful pink mosque by the lake."),
+    ("assets/Putra Perdana (Putrajaya).png", "Putra Perdana (Putrajaya)", "Prime Minister’s office with grand architecture.")
 ]
 
 with c1: render_destination(*destdata_row3[0])
