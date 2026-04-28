@@ -455,6 +455,38 @@ with st.container():
                 """)
 
 
+        # ========== 第 6 位成员：Jamaluddin Ibrahim ==========
+        st.markdown('<div id="jamaluddin-ibrahim"></div>', unsafe_allow_html=True)
+        with st.expander("6. Jamaluddin Ibrahim, Makiplago Holding Sdn Bhd", expanded=(target_speaker == "jamaluddin-ibrahim")):
+            col_side6, col_main6 = st.columns([1, 2.5])
+            
+            with col_side6:
+                # 请确保图片路径与实际相符，例如 "assets/speaker6.jpg"
+                st.image("assets/speaker6.jpg", use_container_width=True)
+                st.markdown("""
+                <div style="background-color: #f8f9fa; padding: 15px; border-radius: 10px; border-left: 4px solid #0b1f3a;">
+                    <p style="margin-bottom: 5px;"><strong>Domain:</strong> E-commerce & Trade</p>
+                    <p style="margin-bottom: 5px;"><strong>Expertise:</strong> Halal Ecosystem & Media</p>
+                </div>
+                """, unsafe_allow_html=True)
+                st.caption("Alumnus of Hunan University")
+
+            with col_main6:
+                st.markdown("### JAMALUDDIN IBRAHIM")
+                st.markdown("##### *Founder & CEO,Makiplago Holding Sdn Bhd*")
+                st.markdown("---")
+                
+                st.markdown("""
+                Jamaluddin Ibrahim is a dynamic entrepreneur and media figure with over 40 years of cross-industry experience spanning engineering, international trade, digital platforms, and media. As Founder & CEO of Makiplago Holding Sdn Bhd and Makiplago (Shenzhen) Technology Co., Ltd, he drives innovation in cross-border e-commerce and digital ecosystems, strengthening trade connectivity between ASEAN and China.
+                
+                An honours graduate in Mechanical Engineering from Hunan University, China, he has held leadership roles across manufacturing, trade, and corporate management, including serving as Managing Director of Paradise Group Sdn Bhd. He is actively engaged in advancing the halal industry ecosystem through policy advocacy, promoting regulatory harmonisation, cross-border standards, and sustainable supply chain frameworks to enhance trade and investment opportunities within the global halal economy.
+                
+                A respected commentator and former Radio 988 personality, Jamaluddin is known for his sharp insights on socio-economic trends, regional development, and industry transformation.
+                
+                He brings a compelling perspective on digital economy growth, sustainable development, halal policy frameworks, and ASEAN–China cooperation in an increasingly interconnected global landscape.
+                """)
+
+
         # ========== 第 5 位成员：Tan Sri Dato’ Sri Dr. Ng Yen Yen J.P. ==========
         st.markdown(f'<div id="ng-yen-yen"></div>', unsafe_allow_html=True)
         with st.expander("5. Tan Sri Dato’ Sri Dr. Ng Yen Yen J.P., Former Minister, Malaysia", expanded=(target_speaker == "ng-yen-yen")):

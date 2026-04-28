@@ -105,6 +105,7 @@ SPEAKER2_PATH = "assets/speaker2.jpg"
 SPEAKER3_PATH = "assets/speaker3.jpg"
 SPEAKER4_PATH = "assets/speaker4.jpg"
 SPEAKER5_PATH = "assets/speaker5.jpg"
+SPEAKER6_PATH = "assets/speaker6.jpg"
 
 
 BG_BASE64 = get_base64_image(BG_PATH)
@@ -145,6 +146,7 @@ SPEAKER2_B64 = get_base64_image(SPEAKER2_PATH)
 SPEAKER3_B64 = get_base64_image(SPEAKER3_PATH)
 SPEAKER4_B64 = get_base64_image(SPEAKER4_PATH)
 SPEAKER5_B64 = get_base64_image(SPEAKER5_PATH)
+SPEAKER6_B64 = get_base64_image(SPEAKER6_PATH)
 
 # =============================
 # Global CSS
@@ -481,11 +483,6 @@ st.markdown("""
 # 1. 定义数据列表 (保持不变，确保 anchor 字段存在)
 speakers = [
     {
-        "name": "Prof. Ir. Dr. Riza Sulaiman",
-        "image": SPEAKER4_B64,
-        "anchor": "riza-sulaiman"
-    },
-    {
         "name": "Prof. Ming-Lang Tseng",
         "image": SPEAKER1_B64,
         "anchor": "ming-lang"
@@ -496,9 +493,9 @@ speakers = [
         "anchor": "ming-lim"
     },
     {
-        "name": "Tan Sri Dato’ Sri Dr. Ng Yen Yen J.P.",
-        "image": SPEAKER5_B64,
-        "anchor": "ng-yen-yen"
+        "name": "Jamaluddin Ibrahim, Makiplago Holding Sdn Bhd",
+        "image": SPEAKER6_B64,
+        "anchor": "jamaluddin-ibrahim"
     },
     {
         "name": "Prof. Ts. Dr. Mohd Helmi Ali",
@@ -510,8 +507,8 @@ speakers = [
 ]
 
 # 2. 创建容器列
-empty_l, col1, col2, col3, col4, col5,empty_r = st.columns([1, 2, 2, 2, 2, 2, 1])
-cols = [col1, col2, col3, col4, col5]
+empty_l, col1, col2, col3, col4,empty_r = st.columns([1, 2, 2, 2, 2, 1])
+cols = [col1, col2, col3, col4,]
 
 # 3. 循环渲染
 for i, col in enumerate(cols):
