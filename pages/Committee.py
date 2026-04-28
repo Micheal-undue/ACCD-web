@@ -362,31 +362,7 @@ with st.container():
     
     with main_col:
         
-       # ========== 第 1 位成员：PROF. Ts. DR. MOHD HELMI ALI (更新) ==========
-        st.markdown(f'<div id="helmi-ali"></div>', unsafe_allow_html=True)
-        with st.expander("1. Prof. Ts. Dr. Mohd Helmi Ali, Universiti Kebangsaan Malaysia", expanded=(target_speaker == "helmi-ali")):
-            col_side, col_main = st.columns([1, 2.5])
-            
-            with col_side:
-                st.image("assets/speaker3.jpg", use_container_width=True)
-                st.markdown("""
-                <div style="background-color: #f8f9fa; padding: 15px; border-radius: 10px; border-left: 4px solid #0b1f3a;">
-                    <p style="margin-bottom: 5px;"><strong>Expertise:</strong> Supply Chain</p>
-                    <p style="margin-bottom: 5px;"><strong>Industry:</strong> Food, O&G, Maritime</p>
-                </div>
-                """, unsafe_allow_html=True)
-                st.caption("Chartered Member of CILT Malaysia")
-
-            with col_main:
-                st.markdown("### PROF. Ts. DR. MOHD HELMI ALI")
-                st.markdown("##### *Professor in Supply Chain Management*")
-                st.markdown("---")
-                
-                st.markdown("""
-                Mohd Helmi Ali is an Professor at the UKM-Graduate School of Business, Universiti Kebangsaan Malaysia. He has experiences in multiple industries such as food, oil and gas, maritime, transportation, and construction. Despite of his recent involvement in academics, he has worked with many research fields, in particular on food integrity and supply chain, halal-hub. His research interest focus on food integrity, halal food supply chain, sustainable development, operation management and innovation. He also is a chartered member The Chartered Institute of Logistics & Transport Malaysia.
-                """)
-
-
+       
         # ========== 第 2 位成员：Professor Ir. Dr. Riza Sulaiman ==========
         st.markdown(f'<div id="riza-sulaiman"></div>', unsafe_allow_html=True)
         # 假设 target_speaker 逻辑一致，此处设为 riza-sulaiman
@@ -477,6 +453,75 @@ with st.container():
 
                 At **ACCD’26**, Prof. Lim will share strategic perspectives on how ASEAN–China cooperation can accelerate regional competitiveness through digital supply chains, green logistics, Industry 4.0 ecosystems, and academia–industry innovation partnerships, directly supporting the Forum’s vision for sustainable regional growth and economic transformation.
                 """)
+
+
+        # ========== 第 5 位成员：Tan Sri Dato’ Sri Dr. Ng Yen Yen J.P. ==========
+        st.markdown(f'<div id="ng-yen-yen"></div>', unsafe_allow_html=True)
+        with st.expander("5. Tan Sri Dato’ Sri Dr. Ng Yen Yen J.P., Former Minister, Malaysia", expanded=(target_speaker == "ng-yen-yen")):
+            col_side5, col_main5 = st.columns([1, 2.5])
+            
+            with col_side5:
+                st.image("assets/speaker5.jpg", use_container_width=True)
+                st.markdown("""
+                <div style="background-color: #f8f9fa; padding: 15px; border-radius: 10px; border-left: 4px solid #0b1f3a;">
+                   <p style="margin-bottom: 5px;"><strong>Domain:</strong> Public Service</p>
+                   <p style="margin-bottom: 5px;"><strong>Expertise:</strong> Tourism & Finance</p>
+                </div>
+                 """, unsafe_allow_html=True)
+                st.caption("Former Cabinet Minister of Malaysia")
+
+            with col_main5:
+                st.markdown("### TAN SRI DATO’ SRI DR. NG YEN YEN J.P.")
+                st.markdown("##### *Former Minister, Ministry of Tourism, Arts & Culture Malaysia*")
+                st.markdown("##### *Former Minister, Ministry of Women, Family and Community Development*")
+                st.markdown("---")
+                
+                st.markdown("""
+                Tan Sri Dato’ Sri Dr. Ng Yen Yen J.P. is a distinguished public figure and leader in Malaysia, having held multiple prominent ministerial portfolios and continuing to serve in various advisory and honorary roles. 
+                
+                **Key Ministerial Roles:**
+                - Former Minister, Ministry of Tourism, Arts & Culture Malaysia
+                - Former Minister, Ministry of Women, Family and Community Development Malaysia
+                - Former Deputy Minister, Ministry of Finance Malaysia
+                
+                **Advisory & Honorary Positions:**
+                - Advisor, Hong Kong Maritime Silk Road Association 
+                - Honorary President, World Research Tourism Organization (WRTO)
+                - Trustee, Yayasan Tuanku Fauziah
+                - Patron, Yayasan Wanita Cemerlang
+                
+                **Political Leadership:**
+                - Former Vice President, Malaysian Chinese Association (MCA)
+                - Honorary Life Chairman of Malaysian Chinese Association Women Wing (Wanita MCA)
+                """)
+
+                
+
+        # ========== 第 1 位成员：PROF. Ts. DR. MOHD HELMI ALI (更新) ==========
+        st.markdown(f'<div id="helmi-ali"></div>', unsafe_allow_html=True)
+        with st.expander("1. Prof. Ts. Dr. Mohd Helmi Ali, Universiti Kebangsaan Malaysia", expanded=(target_speaker == "helmi-ali")):
+            col_side, col_main = st.columns([1, 2.5])
+            
+            with col_side:
+                st.image("assets/speaker3.jpg", use_container_width=True)
+                st.markdown("""
+                <div style="background-color: #f8f9fa; padding: 15px; border-radius: 10px; border-left: 4px solid #0b1f3a;">
+                    <p style="margin-bottom: 5px;"><strong>Expertise:</strong> Supply Chain</p>
+                    <p style="margin-bottom: 5px;"><strong>Industry:</strong> Food, O&G, Maritime</p>
+                </div>
+                """, unsafe_allow_html=True)
+                st.caption("Chartered Member of CILT Malaysia")
+
+            with col_main:
+                st.markdown("### PROF. Ts. DR. MOHD HELMI ALI")
+                st.markdown("##### *Professor in Supply Chain Management*")
+                st.markdown("---")
+                
+                st.markdown("""
+                Mohd Helmi Ali is an Professor at the UKM-Graduate School of Business, Universiti Kebangsaan Malaysia. He has experiences in multiple industries such as food, oil and gas, maritime, transportation, and construction. Despite of his recent involvement in academics, he has worked with many research fields, in particular on food integrity and supply chain, halal-hub. His research interest focus on food integrity, halal food supply chain, sustainable development, operation management and innovation. He also is a chartered member The Chartered Institute of Logistics & Transport Malaysia.
+                """)
+
+
 
 
 
