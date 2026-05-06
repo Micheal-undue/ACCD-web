@@ -769,7 +769,7 @@ st.markdown("""
 <div class="footer center">
     ASEAN–CHINA Regional Development & Cooperation Forum 2026 (ACCD 2026)<br/>
     Universiti Kebangsaan Malaysia (UKM)<br/>
-    © 2026 ACDC Organising Committee. All Rights Reserved.
+    © 2026 ACCD Organising Committee. All Rights Reserved.
 </div>
 """, unsafe_allow_html=True)
 
